@@ -55,6 +55,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase
 
 " ================ Custom mappings ============================================
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " ================ Plugins settings ===========================================
 " airline
