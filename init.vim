@@ -20,6 +20,7 @@ set nocompatible
 syntax enable
 set number relativenumber
 set hidden
+set clipboard=unnamed
 
 " Disable Arrow keys in Escape mode
 map <up> <nop>
