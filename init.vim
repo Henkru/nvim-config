@@ -8,7 +8,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
-
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()
 
 " ================ General ====================================================
@@ -59,6 +60,13 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" - and + to resize horizontal splits
+map - <C-W>-
+map + <C-W>+
+" alt-< or alt-> for vertical splits
+map <Leader>+ <C-W>>
+map <Leader>- <C-W><
 
 " ================ Plugins settings ===========================================
 " airline
