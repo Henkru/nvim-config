@@ -34,6 +34,8 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+set directory^=$HOME/.vim/tmp//             " Set swap file directory
+
 " ================ Indentation ================================================
 set tabstop=4
 set softtabstop=4
