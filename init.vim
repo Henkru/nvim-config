@@ -103,3 +103,10 @@ let NERDTreeMapActivateNode = '<space>'
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ================ Load custom config =========================================
+let g:customConfigFile = '~/.vim/custom.vim'
+
+if !empty(glob(g:customConfigFile))
+    exe 'source ' g:customConfigFile
+endif
