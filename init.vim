@@ -10,6 +10,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'drmingdrmer/vim-toggle-quickfix'
 call vundle#end()
 
 " ================ General ====================================================
@@ -41,7 +43,6 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set shiftwidth=4
-set smartindent
 
 " ================ UI =========================================================
 set cursorline
@@ -104,6 +105,8 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" toggle-quickfix
+nmap <C-g> <Plug>window:quickfix:toggle
 " ================ Load custom config =========================================
 let g:customConfigFile = '~/.vim/custom.vim'
 
