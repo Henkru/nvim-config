@@ -59,10 +59,15 @@ nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase
 
 " ================ Custom mappings ============================================
+" Windows moving
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Buffers moving
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
 
 " - and + to resize horizontal splits
 map - <C-W>-
@@ -70,6 +75,18 @@ map + <C-W>+
 " alt-< or alt-> for vertical splits
 map <Leader>+ <C-W>>
 map <Leader>- <C-W><
+
+" Tab switching
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 " ================ Plugins settings ===========================================
 " airline
