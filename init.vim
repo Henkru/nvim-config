@@ -12,6 +12,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
+Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 
 " ================ General ====================================================
