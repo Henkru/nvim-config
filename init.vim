@@ -109,6 +109,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " toggle-quickfix
 nmap <C-g> <Plug>window:quickfix:toggle
+
+" toggle ALE
+nmap <Leader>a :ALEToggle<Enter>
 " ================ Load custom config =========================================
 let g:customConfigFile = '~/.vim/custom.vim'
 
