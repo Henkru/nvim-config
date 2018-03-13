@@ -13,6 +13,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'w0rp/ale'
 call vundle#end()
 
 " ================ General ====================================================
