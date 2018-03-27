@@ -18,6 +18,8 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'lervag/vimtex'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
 call vundle#end()
 
 " ================ General ====================================================
@@ -62,6 +64,8 @@ set mouse=a
 set splitbelow
 set splitright
 
+highlight clear SignColumn
+
 " ================ Search =====================================================
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
@@ -97,6 +101,12 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+" Better sentence and paragraphs moving for FI layout
+noremap ö (
+noremap ä )
+noremap Ö {
+noremap Ä }
+
 " ================ Plugins settings ===========================================
 " airline
 let g:airline_theme = 'solarized'
@@ -116,8 +126,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " toggle-quickfix
 nmap <C-g> <Plug>window:quickfix:toggle
 
-" toggle ALE
+" ALE
 nmap <Leader>a :ALEToggle<Enter>
+let g:ale_lint_on_text_changed="insert"
+let g:ale_lint_delay=800
+let g:ale_sign_column_always=1
 
 " Deoplete and Ultisnips
 let g:deoplete#enable_at_startup = 1
@@ -145,6 +158,11 @@ endfunction
 
 inoremap pumvisible() ? "=ExpandSnippetOrReturn()" : "<CR>"
 inoremap pumvisible() ? "<C-n>" : check_back_space() ? "<TAB>" : deoplete#mappings#manual_complete()
+
+" GoYo and LimeLight
+nmap <F5> :Goyo <CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " ================ Load custom config =========================================
 let g:customConfigFile = '~/.vim/custom.vim'
