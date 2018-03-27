@@ -14,6 +14,10 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'drmingdrmer/vim-toggle-quickfix'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'w0rp/ale'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'lervag/vimtex'
 call vundle#end()
 
 " ================ General ====================================================
@@ -39,6 +43,8 @@ imap <left> <nop>
 imap <right> <nop>
 
 set directory^=$HOME/.vim/tmp//             " Set swap file directory
+
+let g:tex_flavor='latex'                    " Set default to latex
 
 " ================ Indentation ================================================
 set tabstop=4
@@ -112,6 +118,34 @@ nmap <C-g> <Plug>window:quickfix:toggle
 
 " toggle ALE
 nmap <Leader>a :ALEToggle<Enter>
+
+" Deoplete and Ultisnips
+let g:deoplete#enable_at_startup = 1
+
+let g:ulti_expand_or_jump_res = 0
+let g:UltiSnipsEnableSnipMate = 1
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+function! ExpandSnippetOrReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "<CR>"
+    endif
+endfunction
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
+endfunction
+
+inoremap pumvisible() ? "=ExpandSnippetOrReturn()" : "<CR>"
+inoremap pumvisible() ? "<C-n>" : check_back_space() ? "<TAB>" : deoplete#mappings#manual_complete()
+
 " ================ Load custom config =========================================
 let g:customConfigFile = '~/.vim/custom.vim'
 
