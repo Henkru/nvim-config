@@ -66,6 +66,10 @@ set splitright
 
 highlight clear SignColumn
 
+let g:limelight_conceal_ctermfg = 240
+
+hi MatchParen cterm=none ctermbg=green ctermfg=blue " Better color to hiligh matching brackets
+
 " ================ Search =====================================================
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
@@ -100,12 +104,6 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
-" Better sentence and paragraphs moving for FI layout
-noremap ö (
-noremap ä )
-noremap Ö {
-noremap Ä }
 
 " ================ Plugins settings ===========================================
 " airline
