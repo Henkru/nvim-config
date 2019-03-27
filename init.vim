@@ -57,6 +57,8 @@ set shiftwidth=4
 " ================ UI =========================================================
 set cursorline
 highlight CursorLine ctermbg=Black cterm=NONE
+set guicursor=
+
 set wildmenu
 set showmatch
 set mouse=a
