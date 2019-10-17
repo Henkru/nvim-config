@@ -20,6 +20,13 @@ Plugin 'honza/vim-snippets'
 Plugin 'lervag/vimtex'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-salve'
+Plugin 'guns/vim-clojure-static'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'guns/vim-sexp'
+Plugin 'venantius/vim-cljfmt'
 call vundle#end()
 
 " ================ General ====================================================
@@ -72,6 +79,11 @@ let g:limelight_conceal_ctermfg = 240
 
 hi MatchParen cterm=none ctermbg=green ctermfg=blue " Better color to hiligh matching brackets
 
+" Enable rainbow parentheses
+autocmd VimEnter *       RainbowParenthesesToggle
+autocmd Syntax   clojure RainbowParenthesesLoadRound
+autocmd Syntax   clojure RainbowParenthesesLoadSquare
+autocmd Syntax   clojure RainbowParenthesesLoadBraces
 " ================ Search =====================================================
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
