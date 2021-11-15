@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path})
 end
 
 require('packer').startup({function(use)
@@ -13,31 +13,35 @@ require('packer').startup({function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require "plugins.lualine" end,
+    config = function() require 'plugins.lualine' end,
   }
 
   use {
     'akinsho/bufferline.nvim',
-    config = function() require "plugins.bufferline" end,
+    config = function() require 'plugins.bufferline' end,
   }
 
   use {
-    "kyazdani42/nvim-tree.lua",
-    config = function() require "plugins.nvimtree" end,
-    setup = function() require "mappings".nvimtree() end,
+    'kyazdani42/nvim-tree.lua',
+    config = function() require 'plugins.nvimtree' end,
+    setup = function() require 'mappings'.nvimtree() end,
   }
 
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  }
+
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'}, "nvim-telescope/telescope-media-files.nvim" },
-    config = function() require "plugins.telescope" end,
-    setup = function() require "mappings".telescope() end,
+    requires = { {'nvim-lua/plenary.nvim'}, 'nvim-telescope/telescope-media-files.nvim' },
+    config = function() require 'plugins.telescope' end,
+    setup = function() require 'mappings'.telescope() end,
   }
 
   use {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function() require "plugins.indentblankline" end,
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require 'plugins.indentblankline' end,
   }
 
   use {
@@ -53,32 +57,42 @@ require('packer').startup({function(use)
   use {
     'glepnir/dashboard-nvim',
     config = function() require 'plugins.dashboard' end,
-    setup = function() require "mappings".dashboard() end,
+    setup = function() require 'mappings'.dashboard() end,
+  }
+
+  use {
+    'szw/vim-maximizer',
+    setup = function () require 'mappings'.maximizer() end,
   }
 
   -- General --
   use {
     'terrortylor/nvim-comment',
-    config = function() require "plugins.nvimcomment" end,
-    setup = function() require "mappings".nvimcomment() end,
+    config = function() require 'plugins.nvimcomment' end,
+    setup = function() require 'mappings'.nvimcomment() end,
   }
 
   use {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = function() require 'nvim-autopairs'.setup {} end,
   }
 
   use {
-    "folke/which-key.nvim",
-    config = function() require("which-key").setup {} end,
+    'folke/which-key.nvim',
+    config = function() require('which-key').setup {} end,
   }
 
-  -- LSP, formating and parser stuff --
   use {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "0.5-compat",
-    event = "BufRead",
-    config = function() require "plugins.treesitter" end,
+    use 'ggandor/lightspeed.nvim',
+    config = function() require 'lightspeed' end,
+  }
+
+  -- LSP, formating and syntax highlighting stuff --
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    branch = '0.5-compat',
+    event = 'BufRead',
+    config = function() require 'plugins.treesitter' end,
   }
 
   use {
@@ -87,62 +101,69 @@ require('packer').startup({function(use)
   }
 
   use {
-    "ray-x/lsp_signature.nvim",
+    'ray-x/lsp_signature.nvim',
   }
 
   use {
-    "rafamadriz/friendly-snippets",
-    event = "InsertEnter",
+    'rafamadriz/friendly-snippets',
+    event = 'InsertEnter',
   }
 
   use {
-    "hrsh7th/nvim-cmp",
-    after = "friendly-snippets",
+    'hrsh7th/nvim-cmp',
+    after = 'friendly-snippets',
     config = function() require 'plugins.nvim-cmp' end,
   }
 
   use {
-    "L3MON4D3/LuaSnip",
-    wants = "friendly-snippets",
-    after = "nvim-cmp",
+    'L3MON4D3/LuaSnip',
+    wants = 'friendly-snippets',
+    after = 'nvim-cmp',
     config = function() require 'plugins.luasnip' end,
   }
 
   use {
-    "saadparwaiz1/cmp_luasnip",
-    after = "LuaSnip",
+    'saadparwaiz1/cmp_luasnip',
+    after = 'LuaSnip',
   }
 
   use {
-    "hrsh7th/cmp-nvim-lua",
-    after = "cmp_luasnip",
+    'hrsh7th/cmp-nvim-lua',
+    after = 'cmp_luasnip',
   }
 
   use {
-    "hrsh7th/cmp-nvim-lsp",
-    after = "cmp-nvim-lua",
+    'hrsh7th/cmp-nvim-lsp',
+    after = 'cmp-nvim-lua',
   }
 
   use {
-    "hrsh7th/cmp-buffer",
-    after = "cmp-nvim-lsp",
+    'hrsh7th/cmp-buffer',
+    after = 'cmp-nvim-lsp',
   }
 
   use {
-    "hrsh7th/cmp-path",
-    after = "cmp-buffer",
+    'hrsh7th/cmp-path',
+    after = 'cmp-buffer',
   }
 
   use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()require("trouble").setup {} end,
-    setup = function() require("mappings").trouble() end,
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('trouble').setup {} end,
+    setup = function() require('mappings').trouble() end,
   }
 
   use {
     'sbdchd/neoformat',
-    setup = function() require("mappings").neoformat() end,
+    setup = function() require('mappings').neoformat() end,
+  }
+
+  -- Debug --
+  use {
+    'puremourning/vimspector',
+    config = function() require('plugins.vimspector') end,
+    setup = function() require('mappings').vimspector() end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

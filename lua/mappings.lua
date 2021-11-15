@@ -28,10 +28,16 @@ M.general = function()
   -- Terminal related
   map("n", "<Leader>T", ":terminal <CR>", {silent = true})
   map("t", "<Esc>", "<C-\\><C-n>", {noremap = true})
+
+  -- Don't replace the clipboard when changing the block
+  map('n', 'c', '"_c', {noremap = true})
+  map('n', 'C', '"_C', {noremap = true})
+  map('n', 'cc', '"_cc', {noremap = true})
+  map('x', 'c', '"_c', {noremap = true})
 end
 
 M.nvimtree = function()
-  map("n", "<Leader>e", ":NvimTreeToggle <CR>", {})
+  map("n", "<Leader>t", ":NvimTreeToggle <CR>", {})
 end
 
 M.nvimcomment = function()
@@ -65,6 +71,33 @@ M.dashboard = function()
   map("n", "<Leader>ss", ":SessionSave <CR>", {silent = true})
   -- Load session
   map("n", "<Leader>sl", ":SessionLoad <CR>", {silent = true})
+end
+
+M.vimspector = function()
+  -- Start / stop debug session
+  map('n', '<Leader>dd', ':call vimspector#Launch() <CR>', {silent = true})
+  map('n', '<Leader>ds', ':call vimspector#Reset() <CR>', {silent = true})
+
+  -- Step commands
+  map('n', '<Leader>dl', '<Plug>VimspectorStepInto', {silent = true})
+  map('n', '<Leader>dj', '<Plug>VimspectorStepOver', {silent = true})
+  map('n', '<Leader>dk', '<Plug>VimspectorStepOut', {silent = true})
+  map('n', '<Leader>dr', '<Plug>VimspectorRestart', {silent = true})
+  map('n', '<Leader>d<Space>', '<Plug>VimspectorContinue', {silent = true})
+  map('n', '<Leader>dc', '<Plug>VimspectorRunToCursor', {silent = true})
+
+  -- Set breakpoints
+  map('n', '<Leader>db', '<Plug>VimspectorToggleBreakpoint', {silent = true})
+  map('n', '<Leader>dB', '<Plug>VimspectorToggleConditionalBreakpoint', {silent = true})
+
+  -- Switch windows
+  map('n', '<Leader>dC', ':call win_gotoid(g:vimspector_session_windows.code) <CR>', {silent = true})
+  map('n', '<Leader>dV', ':call win_gotoid(g:vimspector_session_windows.variables) <CR>', {silent = true})
+  map('n', '<Leader>dO', ':call win_gotoid(g:vimspector_session_windows.output) <CR>', {silent = true})
+end
+
+M.maximizer = function ()
+ map('n', '<Leader>m', ':MaximizerToggle <CR>', {silent = true})
 end
 
 return M
