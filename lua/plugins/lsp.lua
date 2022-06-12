@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
 
@@ -71,6 +71,19 @@ for _, lsp in ipairs(servers) do
   end
 end
 
+-- Settings for haskell-language-server
+if (nvim_lsp['hls'] ~= nil) then
+  nvim_lsp.hls.setup({
+    on_attach = on_attach,
+    settings = {
+      haskell = {
+        hlintOn = true,
+        formattingProvider = "fourmolu"
+      }
+    }
+  })
+end
+
 -- Setup lua language servelocal system_name
 local function file_exists(name)
    local f=io.open(name,"r")
@@ -96,7 +109,8 @@ if file_exists(sumneko_binary) then
   table.insert(runtime_path, "lua/?/init.lua")
 
   require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    on_attach = on_attach,
     settings = {
       Lua = {
         runtime = {

@@ -26,7 +26,7 @@ M.general = function()
   map("v", ">", ">gv", {noremap = true})
 
   -- Terminal related
-  map("n", "<Leader>T", ":terminal <CR>", {silent = true})
+  -- map("n", "<Leader>Tt", ":terminal <CR>", {silent = true})
   map("t", "<Esc>", "<C-\\><C-n>", {noremap = true})
 
   -- Don't replace the clipboard when changing the block
@@ -37,12 +37,12 @@ M.general = function()
 end
 
 M.nvimtree = function()
-  map("n", "<Leader>t", ":NvimTreeToggle <CR>", {})
+  map("n", "<Leader>t", ":NvimTreeToggle <CR>", {silent = true})
 end
 
 M.nvimcomment = function()
-  map("n", "<Leader>/", ":CommentToggle <CR>", {})
-  map("v", "<Leader>/", ":CommentToggle <CR>", {})
+  map("n", "<Leader>/", ":CommentToggle <CR>", {silent = true})
+  map("v", "<Leader>/", ":CommentToggle <CR>", {silent = true})
 end
 
 M.telescope = function()
@@ -98,6 +98,10 @@ end
 
 M.maximizer = function ()
  map('n', '<Leader>m', ':MaximizerToggle <CR>', {silent = true})
+end
+
+M.floaterm= function ()
+ map('n', '<Leader>T', ':FloatermToggle <CR>', {silent = true})
 end
 
 return M

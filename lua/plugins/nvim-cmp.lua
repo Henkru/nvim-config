@@ -1,7 +1,5 @@
 local cmp = require("cmp")
 
-vim.opt.completeopt = "menuone,noselect"
-
 local icons = {
  Text = "",
  Method = "",
@@ -32,6 +30,10 @@ local icons = {
 
 -- nvim-cmp setup
 cmp.setup {
+  completion = {
+    completeopt = 'menuone,noselect',
+    keyword_length = 3,
+  },
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)

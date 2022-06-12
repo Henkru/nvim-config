@@ -6,3 +6,5 @@ npm install -g dockerfile-language-server-nodejs
 
 pip3 install --upgrade autopep8
 npm install -g prettier
+
+brew install haskell-language-server

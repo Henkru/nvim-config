@@ -51,7 +51,7 @@ require('packer').startup({function(use)
 
   use {
     'navarasu/onedark.nvim',
-    config = function() require 'onedark'.setup() end,
+    config = function() require 'plugins.onedark' end,
   }
 
   use {
@@ -85,6 +85,11 @@ require('packer').startup({function(use)
   use {
     use 'ggandor/lightspeed.nvim',
     config = function() require 'lightspeed' end,
+  }
+
+  use {
+    'voldikss/vim-floaterm',
+    setup = function() require 'mappings'.floaterm() end,
   }
 
   -- LSP, formating and syntax highlighting stuff --
@@ -157,6 +162,10 @@ require('packer').startup({function(use)
   use {
     'sbdchd/neoformat',
     setup = function() require('mappings').neoformat() end,
+  }
+
+  use {
+    'google/vim-jsonnet'
   }
 
   -- Debug --
