@@ -54,11 +54,11 @@ require('packer').startup({function(use)
     config = function() require 'plugins.onedark' end,
   }
 
-  use {
-    'glepnir/dashboard-nvim',
-    config = function() require 'plugins.dashboard' end,
-    setup = function() require 'mappings'.dashboard() end,
-  }
+  -- use {
+  --   'glepnir/dashboard-nvim',
+  --   config = function() require 'plugins.dashboard' end,
+  --   setup = function() require 'mappings'.dashboard() end,
+  -- }
 
   use {
     'szw/vim-maximizer',
@@ -83,8 +83,7 @@ require('packer').startup({function(use)
   }
 
   use {
-    use 'ggandor/lightspeed.nvim',
-    config = function() require 'lightspeed' end,
+    'ggandor/lightspeed.nvim'
   }
 
   use {
