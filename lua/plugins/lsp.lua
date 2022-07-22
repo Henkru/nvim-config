@@ -1,18 +1,32 @@
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 local set_keymap = require('mappings').lsp
 
--- Use an on_attach function to only map the following keys
- -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+-- Global configuration to share between all the servers
+local lsp_defaults = {
+  flags = {
+    debounce_text_changes = 150,
+  },
+  capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  ),
+  -- Callback function that will be executed when a language server is attached to a buffer
+  on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- Keybindings are defined in mappings.lua
+    set_keymap(bufnr)
+  end
+}
 
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+-- Set the global configuration
+lspconfig.util.default_config = vim.tbl_deep_extend(
+  'force',
+  lspconfig.util.default_config,
+  lsp_defaults
+)
 
-  set_keymap(bufnr)
-end
-
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- Diagnostics config
+vim.diagnostic.config({
   virtual_text = true,
   signs = true,
   underline = true,
@@ -27,42 +41,34 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- Configure signature
-require "lsp_signature".setup({
-  bind = true, -- This is mandatory, otherwise border config won't get registered.
-  handler_opts = {
-    border = "rounded"
-  }
-})
-
 --                           --
 -- General  Language Servers --
 --                           --
-local servers = { 'clangd', 'pyright', 'tsserver', 'dockerls'}
-for _, lsp in ipairs(servers) do
-    if (nvim_lsp[lsp] ~= nil) then
-      nvim_lsp[lsp].setup {
-        on_attach = on_attach,
-        flags = {
-          debounce_text_changes = 150,
-        }
-      }
-  end
-end
-
---                           --
---  Haskel Language Servers  --
---                           --
-if (nvim_lsp['hls'] ~= nil) then
-  nvim_lsp.hls.setup({
-    on_attach = on_attach,
+local servers = {
+  clangd   = {},
+  pyright  = {},
+  tsserver = {},
+  dockerls = {},
+  hls      = {
     settings = {
       haskell = {
         hlintOn = true,
         formattingProvider = "fourmolu"
       }
     }
-  })
+  }
+}
+
+for lsp, opts in pairs(servers) do
+    if (lspconfig[lsp] ~= nil) then
+      lspconfig[lsp].setup(
+        vim.tbl_deep_extend(
+          'force',
+          lsp_defaults,
+          opts
+        )
+      )
+  end
 end
 
 --                           --
@@ -90,9 +96,9 @@ if file_exists(sumneko_binary) then
   table.insert(runtime_path, "lua/?.lua")
   table.insert(runtime_path, "lua/?/init.lua")
 
-  require'lspconfig'.sumneko_lua.setup {
+  lspconfig.sumneko_lua.setup {
+    on_attach = lsp_defaults.on_attach,
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    on_attach = on_attach,
     settings = {
       Lua = {
         runtime = {
@@ -107,6 +113,7 @@ if file_exists(sumneko_binary) then
         workspace = {
           -- Make the server aware of Neovim runtime files
           library = vim.api.nvim_get_runtime_file("", true),
+          checkThirdParty = false
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
