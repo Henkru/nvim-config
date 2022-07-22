@@ -14,11 +14,13 @@ M.general = function()
   map("n", "<C-l>", "<C-w>l", {noremap = true})
   map("n", "<C-k>", "<C-w>k", {noremap = true})
   map("n", "<C-j>", "<C-w>j", {noremap = true})
+  map("n", "<C-c>", "<C-w>c", {noremap = true}) -- C-c to close window
 
   map("n", "<TAB>", ":BufferLineCycleNext <CR>", {})
   map("n", "<S-TAB>", ":BufferLineCyclePrev <CR>", {})
 
-  -- Close buffer
+  -- Create/Close buffer
+  map("n", "<C-n>", ":enew <CR>", {silent = true})
   map("n", "<C-x>", ":bd <CR>", {silent = true})
 
   -- Indent without leaving visual mode
@@ -50,6 +52,7 @@ M.telescope = function()
   map("n", "<Leader>fg", ":Telescope live_grep <CR>", {noremap = true})
   map("n", "<Leader>fb", ":Telescope buffers <CR>", {noremap = true})
   map("n", "<Leader>ft", ":Telescope help_tags <CR>", {noremap = true})
+  map("n", "<Leader>fh", ":lua require 'plugins.hoogle'.list() <CR>", {noremap = true})
 end
 
 M.trouble = function()
@@ -64,14 +67,14 @@ M.neoformat = function()
   map("n", "<Leader>F", ":Neoformat <CR>", {silent = true})
 end
 
-M.dashboard = function()
-  -- New Buffer
-  map("n", "<Leader>fn", ":DashboardNewFile <CR>", {silent = true})
-  -- Save session
-  map("n", "<Leader>ss", ":SessionSave <CR>", {silent = true})
-  -- Load session
-  map("n", "<Leader>sl", ":SessionLoad <CR>", {silent = true})
-end
+-- M.dashboard = function()
+--   -- New Buffer
+--   map("n", "<Leader>fn", ":DashboardNewFile <CR>", {silent = true})
+--   -- Save session
+--   map("n", "<Leader>ss", ":SessionSave <CR>", {silent = true})
+--   -- Load session
+--   map("n", "<Leader>sl", ":SessionLoad <CR>", {silent = true})
+-- end
 
 M.vimspector = function()
   -- Start / stop debug session

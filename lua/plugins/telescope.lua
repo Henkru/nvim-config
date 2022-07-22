@@ -57,8 +57,21 @@ require("telescope").setup {
       filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg", -- find command (defaults to `fd`)
     },
+    hoogle = {
+      render = 'treesitter',
+      renders = {
+        treesitter = {
+          remove_wrap = true
+        }
+      }
+    }
   },
 }
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('media_files')
+require('telescope').load_extension('hoogle')
+
+vim.cmd [[
+  autocmd User TelescopePreviewerLoaded setlocal wrap
+]]

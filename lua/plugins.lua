@@ -27,6 +27,11 @@ require('packer').startup({function(use)
     setup = function() require 'mappings'.nvimtree() end,
   }
 
+  -- Telescope --
+  use {
+    'henkru/telescope-hoogle.nvim'
+  }
+
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
@@ -39,6 +44,7 @@ require('packer').startup({function(use)
     setup = function() require 'mappings'.telescope() end,
   }
 
+  -- General --
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function() require 'plugins.indentblankline' end,
@@ -65,7 +71,6 @@ require('packer').startup({function(use)
     setup = function () require 'mappings'.maximizer() end,
   }
 
-  -- General --
   use {
     'terrortylor/nvim-comment',
     config = function() require 'plugins.nvimcomment' end,
@@ -94,10 +99,15 @@ require('packer').startup({function(use)
   -- LSP, formating and syntax highlighting stuff --
   use {
     'nvim-treesitter/nvim-treesitter',
-    branch = '0.5-compat',
     event = 'BufRead',
     config = function() require 'plugins.treesitter' end,
   }
+
+  -- use {
+  --   'nvim-treesitter/playground',
+  --   after = 'nvim-treesitter',
+  --   requires = 'nvim-treesitter',
+  -- }
 
   use {
     'neovim/nvim-lspconfig',
