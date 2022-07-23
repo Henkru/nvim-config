@@ -58,7 +58,8 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  -- Handled by custom neoformat command which uses lsp by default and then fallbacks to neoformat
+  -- buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 M.nvimtree = function()
@@ -87,7 +88,7 @@ M.trouble = function()
 end
 
 M.neoformat = function()
-  map("n", "<Leader>F", ":Neoformat <CR>", {silent = true})
+  map("n", "<Leader>F", "<cmd>lua require'plugins.neoformat'.format_buffer() <CR>", {silent = true})
 end
 
 -- M.dashboard = function()

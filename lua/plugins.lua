@@ -39,7 +39,10 @@ require('packer').startup({function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'}, 'nvim-telescope/telescope-media-files.nvim' },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-media-files.nvim'
+    },
     config = function() require 'plugins.telescope' end,
     setup = function() require 'mappings'.telescope() end,
   }
@@ -96,7 +99,41 @@ require('packer').startup({function(use)
     setup = function() require 'mappings'.floaterm() end,
   }
 
-  -- LSP, formating and syntax highlighting stuff --
+  -- LSP --
+  use {
+    'neovim/nvim-lspconfig',
+    after = 'nvim-cmp',
+    config = function() require 'plugins.lsp'.setup() end,
+  }
+
+  use {
+    'ray-x/lsp_signature.nvim',
+    config = function() require('plugins.lsp_signature') end,
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function() require('null-ls').setup {} end,
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require('trouble').setup {} end,
+    setup = function() require('mappings').trouble() end,
+  }
+
+  -- use {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --   end,
+  -- }
+
+  -- Treesitter --
   use {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
@@ -109,18 +146,7 @@ require('packer').startup({function(use)
   --   requires = 'nvim-treesitter',
   -- }
 
-  use {
-    'neovim/nvim-lspconfig',
-    after = 'nvim-cmp',
-    config = function() require 'plugins.lsp' end,
-  }
-
-  -- use {
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --   end,
-  -- }
+  -- Autocompletion --
 
   use {
     'hrsh7th/nvim-cmp',
@@ -147,25 +173,15 @@ require('packer').startup({function(use)
   }
 
   use {
-    'ray-x/lsp_signature.nvim',
-    config = function() require('plugins.lsp_signature') end,
-  }
-
-  use {
     'rafamadriz/friendly-snippets',
-  }
-
-  use {
-    'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require('trouble').setup {} end,
-    setup = function() require('mappings').trouble() end,
   }
 
   use {
     'sbdchd/neoformat',
     setup = function() require('mappings').neoformat() end,
   }
+
+  -- Languages --
 
   use {
     'google/vim-jsonnet'
