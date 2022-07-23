@@ -12,7 +12,7 @@ local lsp_defaults = {
   -- Callback function that will be executed when a language server is attached to a buffer
   on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     -- Keybindings are defined in mappings.lua
     set_keymap(bufnr)
   end
