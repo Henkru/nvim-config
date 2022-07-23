@@ -56,7 +56,7 @@ require('packer').startup({function(use)
   }
 
   use {
-    'navarasu/onedark.nvim',
+    'henkru/onedark.nvim',
     config = function() require 'plugins.onedark' end,
   }
 
@@ -114,6 +114,13 @@ require('packer').startup({function(use)
     after = 'nvim-cmp',
     config = function() require 'plugins.lsp' end,
   }
+
+  -- use {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --   end,
+  -- }
 
   use {
     'hrsh7th/nvim-cmp',
