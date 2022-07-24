@@ -1,0 +1,21 @@
+[submodule "start/onedark.nvim"]
+	path = plugins/onedark.nvim
+	url = https://github.com/Henkru/onedark.nvim.git
+[submodule "start/nvim-autopairs"]
+	path = plugins/nvim-autopairs
+	url = https://github.com/windwp/nvim-autopairs.git
+[submodule "start/nvim-lspconfig"]
+	path = plugins/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "start/nvim-cmp"]
+	path = plugins/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "start/cmp-nvim-lsp"]
+	path = plugins/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "start/cmp-buffer"]
+	path = plugins/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer.git
+[submodule "start/cmp-path"]
+	path = plugins/cmp-path
+	url = https://github.com/hrsh7th/cmp-path.git
