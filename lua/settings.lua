@@ -38,4 +38,12 @@ cmd [[
 ]]
 
 -- don't auto commenting new lines
-cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
+cmd [[
+  au BufEnter * set fo-=c fo-=r fo-=o
+]]
+
+-- Detect ansible files
+cmd [[
+  au BufRead *.yaml,*.yml if search('hosts:\|tasks:', 'nw') | set ft=yaml.ansible | endif
+  au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+]]

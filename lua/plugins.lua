@@ -63,12 +63,6 @@ require('packer').startup({function(use)
     config = function() require 'plugins.onedark' end,
   }
 
-  -- use {
-  --   'glepnir/dashboard-nvim',
-  --   config = function() require 'plugins.dashboard' end,
-  --   setup = function() require 'mappings'.dashboard() end,
-  -- }
-
   use {
     'szw/vim-maximizer',
     setup = function () require 'mappings'.maximizer() end,
@@ -101,9 +95,14 @@ require('packer').startup({function(use)
 
   -- LSP --
   use {
+    "williamboman/nvim-lsp-installer",
+    before = 'nvim-lspconfig'
+  }
+
+  use {
     'neovim/nvim-lspconfig',
     after = 'nvim-cmp',
-    config = function() require 'plugins.lsp'.setup() end,
+    config = function() require 'plugins.lsp' end,
   }
 
   use {
@@ -116,7 +115,7 @@ require('packer').startup({function(use)
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = function() require('null-ls').setup {} end,
+    config = function() require('plugins.null-ls') end,
   }
 
   use {
@@ -176,13 +175,7 @@ require('packer').startup({function(use)
     'rafamadriz/friendly-snippets',
   }
 
-  use {
-    'sbdchd/neoformat',
-    setup = function() require('mappings').neoformat() end,
-  }
-
   -- Languages --
-
   use {
     'google/vim-jsonnet'
   }

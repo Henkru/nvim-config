@@ -58,8 +58,7 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<Leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  -- Handled by custom neoformat command which uses lsp by default and then fallbacks to neoformat
-  -- buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 M.nvimtree = function()
@@ -77,6 +76,7 @@ M.telescope = function()
   map("n", "<Leader>fb", ":Telescope buffers <CR>", {noremap = true})
   map("n", "<Leader>ft", ":Telescope help_tags <CR>", {noremap = true})
   map("n", "<Leader>fh", ":lua require 'plugins.hoogle'.list() <CR>", {noremap = true})
+  map("n", "<Leader>fr", ":Telescope reloader <CR>", {noremap = true})
 end
 
 M.trouble = function()
@@ -86,19 +86,6 @@ M.trouble = function()
   map("n", "<Leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
   map("n", "<Leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
 end
-
-M.neoformat = function()
-  map("n", "<Leader>F", "<cmd>lua require'plugins.neoformat'.format_buffer() <CR>", {silent = true})
-end
-
--- M.dashboard = function()
---   -- New Buffer
---   map("n", "<Leader>fn", ":DashboardNewFile <CR>", {silent = true})
---   -- Save session
---   map("n", "<Leader>ss", ":SessionSave <CR>", {silent = true})
---   -- Load session
---   map("n", "<Leader>sl", ":SessionLoad <CR>", {silent = true})
--- end
 
 M.vimspector = function()
   -- Start / stop debug session
