@@ -65,9 +65,9 @@ M.nvimtree = function()
   map("n", "<Leader>t", ":NvimTreeToggle <CR>", {silent = true})
 end
 
-M.nvimcomment = function()
-  map("n", "<Leader>/", ":CommentToggle <CR>", {silent = true})
-  map("v", "<Leader>/", ":CommentToggle <CR>", {silent = true})
+M.comment = function()
+  map("n", "<Leader>/", "gcc", {})
+  map("v", "<Leader>/", "gcc", {})
 end
 
 M.telescope = function()

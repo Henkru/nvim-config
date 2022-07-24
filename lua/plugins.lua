@@ -94,10 +94,10 @@ require('packer').startup({function(use)
   }
 
   use {
-    'terrortylor/nvim-comment',
-    config = function() require 'plugins.nvimcomment' end,
-    setup = function() require 'mappings'.nvimcomment() end,
-    commit = '861921706a39144ea528a6200a059a549b02d8f0'
+    'numtostr/comment.nvim',
+    config = function() require('Comment').setup() end,
+    setup = function() require 'mappings'.comment() end,
+    commit = '27f9416aeb0441fbba8098301c9bd3d4aa011291'
   }
 
   use {
