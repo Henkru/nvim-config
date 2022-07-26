@@ -6,7 +6,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'checkout', '--depth', packer_commit, install_path})
 end
 
-require('packer').startup({function(use)
+local packer = require('user.packer')
+local use = packer.use
+packer.startup({function(_)
   -- Packer itself --
   use {
     'wbthomason/packer.nvim',
@@ -27,7 +29,7 @@ require('packer').startup({function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require 'plugins.lualine' end,
+    config = function() require 'user.lualine' end,
     commit = '5f68f070e4f7158517afc55f125a6f5ed1f7db47'
   }
 
@@ -38,20 +40,20 @@ require('packer').startup({function(use)
 
   use {
     'akinsho/bufferline.nvim',
-    config = function() require 'plugins.bufferline' end,
+    config = function() require 'user.bufferline' end,
     commit = 'e164face76ddb589ba3493092c3ad7cf3afd98f0'
   }
 
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require 'plugins.nvimtree' end,
+    config = function() require 'user.nvimtree' end,
     setup = function() require 'mappings'.nvimtree() end,
     commit = 'd927e89aa9b8a88dba5c58bfbf67586de01ed8dd'
   }
 
   use {
     'b0o/incline.nvim',
-    config = function() require 'plugins.incline' end,
+    config = function() require 'user.incline' end,
     commit = 'a43a25047f267b9526f17d7fcde176dfb5f872bd'
   }
 
@@ -74,7 +76,7 @@ require('packer').startup({function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    config = function() require 'plugins.telescope' end,
+    config = function() require 'user.telescope' end,
     setup = function() require 'mappings'.telescope() end,
     commit = 'b5833a682c511885887373aad76272ad70f7b3c2'
   }
@@ -82,7 +84,7 @@ require('packer').startup({function(use)
   -- General --
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() require 'plugins.indentblankline' end,
+    config = function() require 'user.indentblankline' end,
     commit = '4a58fe6e9854ccfe6c6b0f59abb7cb8301e23025'
   }
 
@@ -94,7 +96,7 @@ require('packer').startup({function(use)
 
   use {
     'henkru/onedark.nvim',
-    config = function() require 'plugins.onedark' end,
+    config = function() require 'user.onedark' end,
     commit = '34a83c70b558f399e8bf7327f9130cbc15cf129a'
   }
 
@@ -142,26 +144,26 @@ require('packer').startup({function(use)
   -- LSP --
   use {
     'williamboman/nvim-lsp-installer',
-    before = 'nvim-lspconfig',
     commit = 'd1d888fda594ffcf41213ba4df40a9478096b226'
   }
 
   use {
     'neovim/nvim-lspconfig',
     after = 'nvim-cmp',
-    config = function() require 'plugins.lsp' end,
+    config = function() require 'user.lsp' end,
     commit = 'dcb7ebb36f0d2aafcc640f520bb1fc8a9cc1f7c8'
   }
 
   use {
     'ray-x/lsp_signature.nvim',
-    config = function() require('plugins.lsp_signature') end,
+    config = function() require('user.lsp_signature') end,
     commit = 'ae92d9a61ce70007e52feed4f89e97e851ee3fbf'
   }
 
   use {
     'jose-elias-alvarez/null-ls.nvim',
-    config = function() require('plugins.null-ls') end,
+    after = 'nvim-lspconfig',
+    config = function() require('user.null-ls') end,
     commit = '9c396ab880bec1097dc4d124c0961cdfa2aa3848'
   }
 
@@ -183,7 +185,7 @@ require('packer').startup({function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
-    config = function() require 'plugins.treesitter' end,
+    config = function() require 'user.treesitter' end,
     commit = '783c74cefc21eda9602acc3f50409432c95c76b8'
   }
 
@@ -196,7 +198,7 @@ require('packer').startup({function(use)
   -- Autocompletion --
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require 'plugins.nvim-cmp' end,
+    config = function() require 'user.nvim-cmp' end,
     commit = '76ba56ce962db88f8ca71c554c568106ca076dc3'
   }
 
@@ -212,7 +214,7 @@ require('packer').startup({function(use)
 
   use {
     'L3MON4D3/LuaSnip',
-    config = function() require 'plugins.luasnip' end,
+    config = function() require 'user.luasnip' end,
     commit = 'be3083bbb8ebc21671bf7c91c27f043ebe0a8d8d'
   }
 
@@ -245,7 +247,7 @@ require('packer').startup({function(use)
   -- Debug --
   use {
     'puremourning/vimspector',
-    config = function() require('plugins.vimspector') end,
+    config = function() require('user.vimspector') end,
     setup = function() require('mappings').vimspector() end,
     commit = 'a17d1e12450d3a2e55bb442a1091a1cff99bc5e2'
   }

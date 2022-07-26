@@ -1,5 +1,5 @@
-require('onedark').setup {
+require('onedark').setup({
   toggle_enabled = false,
-  style = 'darker'
-}
+  style = 'darker',
+})
 require('onedark').load()

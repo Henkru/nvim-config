@@ -1,15 +1,15 @@
-require("nvim-treesitter.configs").setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
-    "lua",
-    "html",
-    "python",
-    "haskell",
-    "javascript",
-    "typescript",
-    "yaml",
-    "dockerfile",
-    "cpp",
-    "markdown"
+    'lua',
+    'html',
+    'python',
+    'haskell',
+    'javascript',
+    'typescript',
+    'yaml',
+    'dockerfile',
+    'cpp',
+    'markdown',
   },
   playground = {
     enable = true,
@@ -28,5 +28,5 @@ require("nvim-treesitter.configs").setup {
       goto_node = '<cr>',
       show_help = '?',
     },
-  }
-}
+  },
+})

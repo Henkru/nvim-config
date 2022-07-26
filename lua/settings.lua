@@ -2,6 +2,7 @@ local cmd = vim.cmd
 local g = vim.g
 local opt = vim.opt
 
+-- stylua: ignore start
 -- General --
 g.mapleader = ' '
 opt.mouse = 'a'
@@ -24,24 +25,25 @@ opt.signcolumn = 'yes'
 opt.termguicolors = true
 
 -- Indentation --
-opt.expandtab = true      -- use spaces instead of tabs
-opt.shiftwidth = 4        -- shift 4 spaces when tab
-opt.tabstop = 4           -- 1 tab == 4 spaces
-opt.smartindent = true    -- autoindent new lines
+opt.expandtab = true          -- use spaces instead of tabs
+opt.shiftwidth = 4            -- shift 4 spaces when tab
+opt.tabstop = 4               -- 1 tab == 4 spaces
+opt.smartindent = true        -- autoindent new lines
 opt.autoindent = true
+-- stylua: ignore end
 
 -- 2 spaces for selected filetypes
-cmd [[
+cmd([[
   autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml,typescript setlocal shiftwidth=2 tabstop=2
-]]
+]])
 
 -- don't auto commenting new lines
-cmd [[
+cmd([[
   au BufEnter * set fo-=c fo-=r fo-=o
-]]
+]])
 
 -- Detect ansible files
-cmd [[
+cmd([[
   au BufRead *.yaml,*.yml if search('hosts:\|tasks:', 'nw') | set ft=yaml.ansible | endif
   au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
-]]
+]])
