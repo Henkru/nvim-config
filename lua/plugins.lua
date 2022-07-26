@@ -1,13 +1,15 @@
 local fn = vim.fn
 local packer_commit = '494fd5999b19e29992eb0978c4fa8988d2023ad8'
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path})
-  fn.system({'git', 'checkout', '--depth', packer_commit, install_path})
+  packer_bootstrap =
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path })
+  fn.system({ 'git', 'checkout', '--depth', packer_commit, install_path })
 end
 
 local packer = require('user.packer')
 local use = packer.use
+-- stylua: ignore
 packer.startup({function(_)
   -- Packer itself --
   use {
@@ -101,11 +103,6 @@ packer.startup({function(_)
   }
 
   use {
-    'folke/tokyonight.nvim',
-    commit = '8223c970677e4d88c9b6b6d81bda23daf11062bb'
-  }
-
-  use {
     'szw/vim-maximizer',
     setup = function () require 'mappings'.maximizer() end,
     commit = '2e54952fe91e140a2e69f35f22131219fcd9c5f1'
@@ -174,12 +171,13 @@ packer.startup({function(_)
     commit = 'da61737d860ddc12f78e638152834487eabf0ee5'
   }
 
-  -- use {
-  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  --   config = function()
-  --     require("lsp_lines").setup()
-  --   end,
-  -- }
+  use {
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    config = function()
+      require("lsp_lines").setup()
+    end,
+    commit = 'db67e94c813aae166c3d2f119ea7d2e85164922a'
+  }
 
   -- Treesitter --
   use {
