@@ -22,6 +22,7 @@ M.general = function()
   -- Create/Close buffer
   map("n", "<C-n>", ":enew <CR>", {silent = true})
   map("n", "<C-x>", ":bd <CR>", {silent = true})
+  map("n", "<C-X>", ":bd! <CR>", {silent = true})
 
   -- Indent without leaving visual mode
   map("v", "<", "<gv", {noremap = true})
@@ -36,6 +37,10 @@ M.general = function()
   map('n', 'C', '"_C', {noremap = true})
   map('n', 'cc', '"_cc', {noremap = true})
   map('x', 'c', '"_c', {noremap = true})
+
+  -- Move between tabs
+  map('n', '<Right>', 'gt', {noremap = true})
+  map('n', '<Left>', 'gT', {noremap = true})
 end
 
 M.lsp = function(bufnr)
@@ -46,8 +51,8 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -74,9 +79,15 @@ M.telescope = function()
   map("n", "<Leader>ff", ":Telescope find_files <CR>", {noremap = true})
   map("n", "<Leader>fg", ":Telescope live_grep <CR>", {noremap = true})
   map("n", "<Leader>fb", ":Telescope buffers <CR>", {noremap = true})
+  map("n", "<Leader>fd", ":Telescope lsp_definitions <CR>", {noremap = true})
+  map("n", "<Leader>fi", ":Telescope lsp_implementations <CR>", {noremap = true})
   map("n", "<Leader>ft", ":Telescope help_tags <CR>", {noremap = true})
+  map("n", "<Leader>fT", ":Telescope <CR>", {noremap = true})
   map("n", "<Leader>fh", ":lua require 'plugins.hoogle'.list() <CR>", {noremap = true})
-  map("n", "<Leader>fr", ":Telescope reloader <CR>", {noremap = true})
+  map("n", "<Leader>fr", ":Telescope lsp_references <CR>", {noremap = true})
+  map("n", "<Leader>fR", ":Telescope reloader <CR>", {noremap = true})
+  map("n", "<Leader>fsd", ":Telescope lsp_document_symbols <CR>", {noremap = true})
+  map("n", "<Leader>fsw", ":Telescope lsp_workspace_symbols <CR>", {noremap = true})
 end
 
 M.trouble = function()

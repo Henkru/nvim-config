@@ -1,5 +1,6 @@
 local actions = require("telescope.actions")
 
+
 require("telescope").setup {
   defaults = {
     vimgrep_arguments = {
@@ -21,7 +22,7 @@ require("telescope").setup {
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.55,
+        preview_width = 0.45,
         results_width = 0.8,
       },
       vertical = {
@@ -82,3 +83,4 @@ require('telescope').load_extension('hoogle')
 vim.cmd [[
   autocmd User TelescopePreviewerLoaded setlocal wrap
 ]]
+

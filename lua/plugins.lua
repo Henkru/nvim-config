@@ -13,7 +13,7 @@ require('packer').startup({function(use)
     commit = packer_commit
   }
 
-  -- Used by telescope and null-ls
+  -- Meta
   use {
     'nvim-lua/plenary.nvim',
     commit = '986ad71ae930c7d96e812734540511b4ca838aa2'
@@ -32,6 +32,11 @@ require('packer').startup({function(use)
   }
 
   use {
+    'arkav/lualine-lsp-progress',
+    commit = '56842d097245a08d77912edf5f2a69ba29f275d7'
+  }
+
+  use {
     'akinsho/bufferline.nvim',
     config = function() require 'plugins.bufferline' end,
     commit = 'e164face76ddb589ba3493092c3ad7cf3afd98f0'
@@ -42,6 +47,12 @@ require('packer').startup({function(use)
     config = function() require 'plugins.nvimtree' end,
     setup = function() require 'mappings'.nvimtree() end,
     commit = 'd927e89aa9b8a88dba5c58bfbf67586de01ed8dd'
+  }
+
+  use {
+    'b0o/incline.nvim',
+    config = function() require 'plugins.incline' end,
+    commit = 'a43a25047f267b9526f17d7fcde176dfb5f872bd'
   }
 
   -- Telescope --
@@ -85,6 +96,11 @@ require('packer').startup({function(use)
     'henkru/onedark.nvim',
     config = function() require 'plugins.onedark' end,
     commit = '34a83c70b558f399e8bf7327f9130cbc15cf129a'
+  }
+
+  use {
+    'folke/tokyonight.nvim',
+    commit = '8223c970677e4d88c9b6b6d81bda23daf11062bb'
   }
 
   use {
@@ -171,14 +187,13 @@ require('packer').startup({function(use)
     commit = '783c74cefc21eda9602acc3f50409432c95c76b8'
   }
 
-  -- use {
-  --   'nvim-treesitter/playground',
-  --   after = 'nvim-treesitter',
-  --   requires = 'nvim-treesitter',
-  -- }
+  use {
+    'nvim-treesitter/playground',
+    after = 'nvim-treesitter',
+    commit = 'ce7e4b757598f1c785ed0fd94fc65959acd7d39c'
+  }
 
   -- Autocompletion --
-
   use {
     'hrsh7th/nvim-cmp',
     config = function() require 'plugins.nvim-cmp' end,
@@ -209,6 +224,11 @@ require('packer').startup({function(use)
   use {
     'hrsh7th/cmp-path',
     commit = '981baf9525257ac3269e1b6701e376d6fbff6921'
+  }
+
+  use {
+    'hrsh7th/cmp-nvim-lua',
+    commit = 'd276254e7198ab7d00f117e88e223b4bd8c02d21'
   }
 
   use {
