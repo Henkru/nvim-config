@@ -55,7 +55,7 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<Leader>hd', '<cmd>lua require("lsp_lines").toggle()<CR>', opts)
   buf_set_keymap('n', '<Leader>hs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<Leader>ho', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>wl', '<cmd>lua vim.lsp.buf.list_workspace_folders()<CR>', opts)
@@ -138,6 +138,58 @@ end
 
 M.floaterm = function()
   map('n', '<Leader>T', ':FloatermToggle <CR>', { silent = true })
+end
+
+M.cmp = function()
+  local cmp = require('cmp')
+  local ls = require('luansip')
+  return {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-c>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
+    ['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+    ['<C-k>'] = cmp.mapping(function(fallback)
+      if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<C-j>'] = cmp.mapping(function(fallback)
+      if ls.jumpable(-1) then
+        ls.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['C-l>'] = function(fallback)
+      if ls.choice_active() then
+        ls.change_choice(1)
+      else
+        fallback()
+      end
+    end,
+  }
 end
 
 return M
