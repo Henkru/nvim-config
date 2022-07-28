@@ -3,14 +3,14 @@ local packer_commit = '494fd5999b19e29992eb0978c4fa8988d2023ad8'
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap =
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path })
+  fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path })
   fn.system({ 'git', 'checkout', '--depth', packer_commit, install_path })
 end
 
 local packer = require('user.packer')
 local use = packer.use
 -- stylua: ignore
-packer.startup({function(_)
+packer.startup({ function(_)
   -- Packer itself --
   use {
     'wbthomason/packer.nvim',
@@ -104,7 +104,7 @@ packer.startup({function(_)
 
   use {
     'szw/vim-maximizer',
-    setup = function () require 'mappings'.maximizer() end,
+    setup = function() require 'mappings'.maximizer() end,
     commit = '2e54952fe91e140a2e69f35f22131219fcd9c5f1'
   }
 
@@ -148,6 +148,7 @@ packer.startup({function(_)
     'neovim/nvim-lspconfig',
     after = 'nvim-cmp',
     config = function() require 'user.lsp' end,
+    setup = function() require 'mappings'.lsp_global() end,
     commit = 'dcb7ebb36f0d2aafcc640f520bb1fc8a9cc1f7c8'
   }
 
@@ -182,7 +183,6 @@ packer.startup({function(_)
   -- Treesitter --
   use {
     'nvim-treesitter/nvim-treesitter',
-    event = 'BufRead',
     config = function() require 'user.treesitter' end,
     commit = '783c74cefc21eda9602acc3f50409432c95c76b8'
   }
@@ -256,10 +256,10 @@ packer.startup({function(_)
     require('packer').sync()
   end
 end,
-config = {
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'single' })
-    end
-  }
-}})
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  } })

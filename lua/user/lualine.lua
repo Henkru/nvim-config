@@ -1,3 +1,4 @@
+local grammarly = require('user.grammarly')
 local lsp_status = {
   'lsp_progress',
   display_components = { 'spinner' },
@@ -12,6 +13,7 @@ require('lualine').setup({
   },
   sections = {
     lualine_x = {
+      { grammarly.status_line, color = { fg = '#ff0000', gui = 'bold' } },
       lsp_status,
       'encoding',
       'fileformat',

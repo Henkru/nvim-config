@@ -1,5 +1,6 @@
 local lspconfig = require('lspconfig')
 local set_keymap = require('mappings').lsp
+local grammarly = require('user.grammarly')
 
 require('nvim-lsp-installer').setup({
   automatic_installation = false,
@@ -16,20 +17,14 @@ require('nvim-lsp-installer').setup({
 --        Diagnostics        --
 --                           --
 local diagnostic_default = {
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   underline = true,
-  update_in_insert = true,
-  virtual_lines = true,
+  update_in_insert = false,
+  virtual_lines = false,
 }
 
-local diagnostic_custom = {
-  hls = {
-    virtual_text = true,
-    update_in_insert = true,
-    virtual_lines = false,
-  },
-}
+local diagnostic_custom = {}
 
 -- Set default diagnostic config
 vim.diagnostic.config(diagnostic_default)
@@ -103,6 +98,12 @@ local servers = {
         },
       },
     },
+  },
+  grammarly = {
+    init_options = {
+      clientId = 'client_BaDkMgx4X19X9UxxYRCXZo',
+    },
+    filetypes = {},
   },
 }
 

@@ -53,6 +53,7 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<Leader>hd', '<cmd>lua require("lsp_lines").toggle()<CR>', opts)
   buf_set_keymap('n', '<Leader>hs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<Leader>ho', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -69,13 +70,18 @@ M.lsp = function(bufnr)
   buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
 end
 
+M.lsp_global = function()
+  -- stylua: ignore
+  map('n', '<Leader>G', ':lua require"lspconfig"["grammarly"].manager.try_add()<CR>', { noremap = true, silent = true })
+end
+
 M.nvimtree = function()
-  map('n', '<Leader>t', ':NvimTreeToggle <CR>', { silent = true })
+  map('n', '<Leader>t', ':NvimTreeToggle<CR>', { silent = true })
 end
 
 M.comment = function()
-  map('n', '<Leader>/', 'gcc', {})
-  map('v', '<Leader>/', 'gcc', {})
+  -- map('n', '<Leader>/', 'gcc', {})
+  -- map('v', '<Leader>/', 'gcc', {})
 end
 
 M.telescope = function()
@@ -84,13 +90,15 @@ M.telescope = function()
   map('n', '<Leader>fb', ':Telescope buffers <CR>', { noremap = true })
   map('n', '<Leader>fd', ':Telescope lsp_definitions <CR>', { noremap = true })
   map('n', '<Leader>fi', ':Telescope lsp_implementations <CR>', { noremap = true })
+  map('n', '<Leader>fn', ':Telescope find_files cwd=~/.config/nvim <CR>', { noremap = true })
   map('n', '<Leader>ft', ':Telescope help_tags <CR>', { noremap = true })
   map('n', '<Leader>fT', ':Telescope <CR>', { noremap = true })
-  map('n', '<Leader>fh', ":lua require 'plugins.hoogle'.list() <CR>", { noremap = true })
+  map('n', '<Leader>fh', ":lua require 'user.hoogle'.list() <CR>", { noremap = true })
   map('n', '<Leader>fr', ':Telescope lsp_references <CR>', { noremap = true })
   map('n', '<Leader>fR', ':Telescope reloader <CR>', { noremap = true })
   map('n', '<Leader>fsd', ':Telescope lsp_document_symbols <CR>', { noremap = true })
   map('n', '<Leader>fsw', ':Telescope lsp_workspace_symbols <CR>', { noremap = true })
+  map('n', '<Leader>/', ':Telescope current_buffer_fuzzy_find <CR>', { noremap = true })
 end
 
 M.trouble = function()
