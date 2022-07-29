@@ -109,27 +109,22 @@ M.trouble = function()
   map('n', '<Leader>xq', '<cmd>Trouble quickfix<cr>', { silent = true, noremap = true })
 end
 
-M.vimspector = function()
+M.debug = function()
   -- Start / stop debug session
-  map('n', '<Leader>dd', ':call vimspector#Launch() <CR>', { silent = true })
-  map('n', '<Leader>ds', ':call vimspector#Reset() <CR>', { silent = true })
+  map('n', '<Leader>dd', '<cmd>lua require"dap".continue()<cr>', { silent = true, noremap = true })
+  map('n', '<Leader>ds', '<cmd>lua require"dap".close()<cr>', { silent = true, noremap = true })
+  map('n', '<Leader>dx', '<cmd>lua require"dap".terminate()<cr>', { silent = true, noremap = true })
 
   -- Step commands
-  map('n', '<Leader>dl', '<Plug>VimspectorStepInto', { silent = true })
-  map('n', '<Leader>dj', '<Plug>VimspectorStepOver', { silent = true })
-  map('n', '<Leader>dk', '<Plug>VimspectorStepOut', { silent = true })
-  map('n', '<Leader>dr', '<Plug>VimspectorRestart', { silent = true })
-  map('n', '<Leader>d<Leader>', '<Plug>VimspectorContinue', { silent = true })
-  map('n', '<Leader>dc', '<Plug>VimspectorRunToCursor', { silent = true })
+  map('n', '<F1>', '<cmd>lua require"dap".continue()<cr>', { silent = false, noremap = true })
+  map('n', '<F2>', '<cmd>lua require"dap".step_over()<cr>', { silent = false, noremap = true })
+  map('n', '<F3>', '<cmd>lua require"dap".step_into()<cr>', { silent = true, noremap = true })
+  map('n', '<F4>', '<cmd>lua require"dap".step_out()<cr>', { silent = true, noremap = true })
+  map('n', '<Leader>dc', '<cmd>lua require"dap".run_to_cursor()<cr>', { silent = true, noremap = true })
 
   -- Set breakpoints
-  map('n', '<Leader>db', '<Plug>VimspectorToggleBreakpoint', { silent = true })
-  map('n', '<Leader>dB', '<Plug>VimspectorToggleConditionalBreakpoint', { silent = true })
-
-  -- Switch windows
-  map('n', '<Leader>dC', ':call win_gotoid(g:vimspector_session_windows.code) <CR>', { silent = true })
-  map('n', '<Leader>dV', ':call win_gotoid(g:vimspector_session_windows.variables) <CR>', { silent = true })
-  map('n', '<Leader>dO', ':call win_gotoid(g:vimspector_session_windows.output) <CR>', { silent = true })
+  map('n', '<Leader>db', '<cmd>lua require"dap".toggle_breakpoint()<cr>', { silent = true })
+  map('n', '<Leader>dB', '<cmd>lua require"dap".set_breakpoint(vim.fn.input "[Condition] > ")<cr>', { silent = true })
 end
 
 M.maximizer = function()
@@ -142,7 +137,7 @@ end
 
 M.cmp = function()
   local cmp = require('cmp')
-  local ls = require('luansip')
+  local ls = require('luasnip')
   return {
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -168,14 +163,14 @@ M.cmp = function()
         fallback()
       end
     end,
-    ['<C-k>'] = cmp.mapping(function(fallback)
+    ['<C-j>'] = cmp.mapping(function(fallback)
       if ls.expand_or_jumpable() then
         ls.expand_or_jump()
       else
         fallback()
       end
     end, { 'i', 's' }),
-    ['<C-j>'] = cmp.mapping(function(fallback)
+    ['<C-k>'] = cmp.mapping(function(fallback)
       if ls.jumpable(-1) then
         ls.jump(-1)
       else

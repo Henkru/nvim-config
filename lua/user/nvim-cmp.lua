@@ -55,7 +55,7 @@ cmp.setup({
   window = {
     documentation = cmp.config.window.bordered(),
   },
-  mapping = {},
+  mapping = require('mappings').cmp(),
   sources = {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },

@@ -3,7 +3,7 @@ local packer_commit = '494fd5999b19e29992eb0978c4fa8988d2023ad8'
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap =
-  fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path })
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomgroup-switchason/packer.nvim', install_path })
   fn.system({ 'git', 'checkout', '--depth', packer_commit, install_path })
 end
 
@@ -244,11 +244,31 @@ packer.startup({ function(_)
 
   -- Debug --
   use {
-    'puremourning/vimspector',
-    config = function() require('user.vimspector') end,
-    setup = function() require('mappings').vimspector() end,
-    commit = 'a17d1e12450d3a2e55bb442a1091a1cff99bc5e2'
+    'mfussenegger/nvim-dap',
+    config = function() require 'user.dap'.setup() end,
+    commit = 'a13d6cb9ea8f7bbf8dd9c5de9ca2cbee64d2e258'
   }
+
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    commit = '41bd4b5a698444d30d5827b2d19bcbae4e084ab4'
+  }
+
+  use {
+    'rcarriga/nvim-dap-ui',
+    commit = 'b7b71444128f5aa90e4aee8dbfa36b14afddfb7a',
+  }
+
+  use {
+    'nvim-telescope/telescope-dap.nvim',
+    commit = 'b4134fff5cbaf3b876e6011212ed60646e56f060',
+  }
+
+  use {
+    'mfussenegger/nvim-dap-python',
+    commit = 'cc6732ab33a84b3a6b4300fcda5b2f837851b88e',
+  }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
