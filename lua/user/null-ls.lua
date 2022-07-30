@@ -12,6 +12,7 @@ null_ls.setup({
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.markdownlint,
   },
   on_attach = lspconfig.util.default_config.on_attach,
 })
