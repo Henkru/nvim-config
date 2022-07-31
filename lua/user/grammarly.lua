@@ -13,16 +13,16 @@ end
 M.account_connected = false
 
 M.get_oauth_url = function()
-  with_grammarly(true, function(grammarly)
-    vim.lsp.buf_request(grammarly, '$/getOAuthUrl', 'vscode://znck.grammarly/auth/callback', function(_, result, _, _)
+  with_grammarly(true, function(_)
+    vim.lsp.buf_request(0, '$/getOAuthUrl', 'vscode://znck.grammarly/auth/callback', function(_, result, _, _)
       vim.notify(result, vim.log.levels.INFO)
     end)
   end)
 end
 
 M.login = function(url)
-  with_grammarly(true, function(grammarly)
-    vim.lsp.buf_request(grammarly, '$/handleOAuthCallbackUri', url, function(err, _, _, _)
+  with_grammarly(true, function(_)
+    vim.lsp.buf_request(0, '$/handleOAuthCallbackUri', url, function(err, _, _, _)
       if err ~= nil then
         vim.notify(err.message, vim.log.levels.ERROR)
       else
@@ -34,8 +34,8 @@ M.login = function(url)
 end
 
 M.logout = function()
-  with_grammarly(true, function(grammarly)
-    vim.lsp.buf_request(grammarly, '$/logout', nil, function(_, _, _, _)
+  with_grammarly(true, function(_)
+    vim.lsp.buf_request(0, '$/logout', nil, function(_, _, _, _)
       vim.notify('Account Logged Out', vim.log.levels.INFO)
       M.update_account_status()
     end)
@@ -43,8 +43,8 @@ M.logout = function()
 end
 
 M.update_account_status = function()
-  with_grammarly(false, function(grammarly)
-    vim.lsp.buf_request(grammarly, '$/isUserAccountConnected', nil, function(_, res, _, _)
+  with_grammarly(false, function(_)
+    vim.lsp.buf_request(0, '$/isUserAccountConnected', nil, function(_, res, _, _)
       M.account_connected = res
     end)
   end)
@@ -57,7 +57,7 @@ M.status_line = function()
   })
   if next(clients) then
     M.update_account_status()
-    return M.account_connected and 'Grammarly' or 'Grammarly [N]'
+    return M.account_connected and 'Grammarly' or 'Grammarly [Free]'
   else
     return ''
   end

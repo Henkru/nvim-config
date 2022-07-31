@@ -140,8 +140,14 @@ packer.startup({ function(_)
 
   -- LSP --
   use {
-    'williamboman/nvim-lsp-installer',
-    commit = 'd1d888fda594ffcf41213ba4df40a9478096b226'
+    'williamboman/mason.nvim',
+    config = function() require('user.mason') end,
+    commit = 'b655a2fa2840ecc3c2ea06f618ba7673f6a1b1a3'
+  }
+
+  use {
+    'williamboman/mason-lspconfig.nvim',
+    commit = '0f9b52b8858032b283a29bee7f7a7166660db2c8'
   }
 
   use {

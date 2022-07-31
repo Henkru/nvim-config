@@ -1,16 +1,8 @@
 local lspconfig = require('lspconfig')
 local set_keymap = require('mappings').lsp
-local grammarly = require('user.grammarly')
 
-require('nvim-lsp-installer').setup({
+require('mason-lspconfig').setup({
   automatic_installation = false,
-  ui = {
-    icons = {
-      server_installed = '✓',
-      server_pending = '➜',
-      server_uninstalled = '✗',
-    },
-  },
 })
 
 --                           --
