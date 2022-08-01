@@ -20,7 +20,7 @@ packer.startup({ function(_)
   -- Meta
   use {
     'nvim-lua/plenary.nvim',
-    commit = '986ad71ae930c7d96e812734540511b4ca838aa2'
+    commit = '31807eef4ed574854b8a53ae40ea3292033a78ea'
   }
 
   -- UI --
@@ -32,7 +32,7 @@ packer.startup({ function(_)
   use {
     'nvim-lualine/lualine.nvim',
     config = function() require 'user.lualine' end,
-    commit = '6d11f9f50817020cf634903a235628cabe0c56f8'
+    commit = 'c880c8cfedd461c3bc93540f5aab4e8447bfcb2f'
   }
 
   use {
@@ -50,7 +50,7 @@ packer.startup({ function(_)
     'kyazdani42/nvim-tree.lua',
     config = function() require 'user.nvimtree' end,
     setup = function() require 'mappings'.nvimtree() end,
-    commit = '9bbf95e61691feb6696880701cdb1b6cafa97d41'
+    commit = '451901ca9c4a0d97d7b7cb93276be7ed5588b3ab'
   }
 
   use {
@@ -80,7 +80,7 @@ packer.startup({ function(_)
     'nvim-telescope/telescope.nvim',
     config = function() require 'user.telescope' end,
     setup = function() require 'mappings'.telescope() end,
-    commit = 'b5833a682c511885887373aad76272ad70f7b3c2'
+    commit = '75a5e5065376d9103fc4bafc3ae6327304cee6e9'
   }
 
   -- General --
@@ -93,7 +93,7 @@ packer.startup({ function(_)
   use {
     'lewis6991/gitsigns.nvim',
     config = function() require 'gitsigns'.setup {} end,
-    commit = '8b817e76b6399634f3f49e682d6e409844241858'
+    commit = '9c3ca027661136a618c82275427746e481c84a4e'
   }
 
   use {
@@ -112,13 +112,13 @@ packer.startup({ function(_)
     'numtostr/comment.nvim',
     config = function() require('Comment').setup() end,
     setup = function() require 'mappings'.comment() end,
-    commit = '78ab4e9785b6da9b7a539df3bd6f70300dc9482b'
+    commit = '006724e38c244c3128b2840ea40bd61dd6c419f0'
   }
 
   use {
     'windwp/nvim-autopairs',
     config = function() require 'nvim-autopairs'.setup {} end,
-    commit = '972a7977e759733dd6721af7bcda7a67e40c010e'
+    commit = 'cc8f7569cc1e1b31e50b3c8e382bc2749cbfb2fa'
   }
 
   use {
@@ -142,12 +142,12 @@ packer.startup({ function(_)
   use {
     'williamboman/mason.nvim',
     config = function() require('user.mason') end,
-    commit = 'b655a2fa2840ecc3c2ea06f618ba7673f6a1b1a3'
+    commit = 'cade5689780618767a6c0a4f0f9f9461726df376'
   }
 
   use {
     'williamboman/mason-lspconfig.nvim',
-    commit = '0f9b52b8858032b283a29bee7f7a7166660db2c8'
+    commit = 'f87c5796603aa3436d9cb1d36dbe5b2e579e4034'
   }
 
   use {
@@ -155,7 +155,7 @@ packer.startup({ function(_)
     after = 'nvim-cmp',
     config = function() require 'user.lsp' end,
     setup = function() require 'mappings'.lsp_global() end,
-    commit = '60f2993b9661d9844cee3bebdbd1b5860577eb3c'
+    commit = '80fddd28de5fe0642da7adee955f5762b933e730'
   }
 
   use {
@@ -168,7 +168,7 @@ packer.startup({ function(_)
     'jose-elias-alvarez/null-ls.nvim',
     after = 'nvim-lspconfig',
     config = function() require('user.null-ls') end,
-    commit = '47c04991af80b6acdf08a5db057908b52f4d0699'
+    commit = '02b5971c355e4e5e6fdd005c992195cb1900aaae'
   }
 
   use {
@@ -183,14 +183,14 @@ packer.startup({ function(_)
     config = function()
       require("lsp_lines").setup()
     end,
-    commit = 'db67e94c813aae166c3d2f119ea7d2e85164922a'
+    commit = '0fc1bd02d11b33d5bf1ee6bff3d66cd43d1b66d1'
   }
 
   -- Treesitter --
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function() require 'user.treesitter' end,
-    commit = '18ad3904fbf7f1a11140c97e45432d57e63b40eb'
+    commit = '22824614163c54ef5d366b15c8685e24d33763db'
   }
 
   use {
@@ -203,7 +203,7 @@ packer.startup({ function(_)
   use {
     'hrsh7th/nvim-cmp',
     config = function() require 'user.nvim-cmp' end,
-    commit = '76ba56ce962db88f8ca71c554c568106ca076dc3'
+    commit = '706371f1300e7c0acb98b346f80dad2dd9b5f679'
   }
 
   use {
@@ -229,7 +229,7 @@ packer.startup({ function(_)
 
   use {
     'hrsh7th/cmp-path',
-    commit = '981baf9525257ac3269e1b6701e376d6fbff6921'
+    commit = '447c87cdd6e6d6a1d2488b1d43108bfa217f56e1'
   }
 
   use {
@@ -239,7 +239,7 @@ packer.startup({ function(_)
 
   use {
     'rafamadriz/friendly-snippets',
-    commit = '1db69684a27eec0b9f520a5d7d95d414fc30ba91'
+    commit = '8880d7257e6f25e177a8192ef35d4ba8874b004d'
   }
 
   -- Languages --
@@ -272,7 +272,7 @@ packer.startup({ function(_)
 
   use {
     'mfussenegger/nvim-dap-python',
-    commit = 'cc6732ab33a84b3a6b4300fcda5b2f837851b88e',
+    commit = '86d263609c7253a6043b07e695f565ed8e34fcbf',
   }
 
 

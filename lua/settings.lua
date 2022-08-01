@@ -47,3 +47,7 @@ cmd([[
   au BufRead *.yaml,*.yml if search('hosts:\|tasks:', 'nw') | set ft=yaml.ansible | endif
   au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 ]])
+
+cmd([[
+  au BufRead plugins.lua lua require 'user.update'
+]])
