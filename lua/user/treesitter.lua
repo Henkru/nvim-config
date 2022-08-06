@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup({
     'dockerfile',
     'cpp',
     'markdown',
+    'sql',
   },
   playground = {
     enable = true,

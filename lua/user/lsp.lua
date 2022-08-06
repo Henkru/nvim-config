@@ -34,6 +34,10 @@ end
 --                           --
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
+local formatting_disabled = {
+  sqls = true,
+}
+
 -- Global configuration to share between all the servers
 local lsp_defaults = {
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -41,7 +45,7 @@ local lsp_defaults = {
     -- Keybindings are defined in mappings.lua
     set_keymap(bufnr)
     -- Format on save
-    if client.server_capabilities.documentFormattingProvider then
+    if client.server_capabilities.documentFormattingProvider and not formatting_disabled[client.name] then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = augroup,
@@ -80,6 +84,7 @@ local servers = {
   },
   jsonls = {},
   pyright = {},
+  sqls = {},
   terraformls = {},
   tsserver = {},
   yamlls = {

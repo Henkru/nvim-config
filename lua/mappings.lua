@@ -177,7 +177,7 @@ M.cmp = function()
         fallback()
       end
     end, { 'i', 's' }),
-    ['C-l>'] = function(fallback)
+    ['<C-l>'] = function(fallback)
       if ls.choice_active() then
         ls.change_choice(1)
       else
