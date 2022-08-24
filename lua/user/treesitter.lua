@@ -12,6 +12,9 @@ require('nvim-treesitter.configs').setup({
     'markdown',
     'sql',
   },
+  highlight = {
+    enable = true,
+  },
   playground = {
     enable = true,
     disable = {},

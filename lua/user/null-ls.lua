@@ -13,6 +13,7 @@ null_ls.setup({
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.formatting.stylish_haskell,
   },
   on_attach = lspconfig.util.default_config.on_attach,
 })

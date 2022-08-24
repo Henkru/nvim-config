@@ -78,7 +78,9 @@ local servers = {
     settings = {
       haskell = {
         hlintOn = true,
-        formattingProvider = 'fourmolu',
+        -- HLS for GHC 9.0.2 does not include stylish-haskell plugin
+        -- we'll use null-ls instead
+        -- formattingProvider = 'stylish-haskell',
       },
     },
   },

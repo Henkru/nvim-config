@@ -34,7 +34,7 @@ opt.autoindent = true
 
 -- 2 spaces for selected filetypes
 cmd([[
-  autocmd FileType xml,html,xhtml,css,scss,javascript,lua,yaml,typescript setlocal shiftwidth=2 tabstop=2
+  autocmd FileType xml,html,xhtml,css,scss,haskell,javascript,lua,yaml,typescript setlocal shiftwidth=2 tabstop=2
 ]])
 
 -- don't auto commenting new lines
