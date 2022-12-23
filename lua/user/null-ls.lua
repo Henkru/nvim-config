@@ -14,6 +14,16 @@ null_ls.setup({
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.stylish_haskell,
+    null_ls.builtins.formatting.verible_verilog_format.with({
+      extra_args = {
+        '--indentation_spaces',
+        '4',
+        '--line_break_penalty',
+        '0',
+        '--column_limit',
+        '100',
+      },
+    }),
   },
   on_attach = lspconfig.util.default_config.on_attach,
 })

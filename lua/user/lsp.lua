@@ -40,7 +40,7 @@ local formatting_disabled = {
 
 -- Global configuration to share between all the servers
 local lsp_defaults = {
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Keybindings are defined in mappings.lua
     set_keymap(bufnr)
@@ -102,8 +102,9 @@ local servers = {
     init_options = {
       clientId = 'client_BaDkMgx4X19X9UxxYRCXZo',
     },
-    filetypes = {},
+    filetypes = { 'text' },
   },
+  svlangserver = {},
 }
 
 for lsp, opts in pairs(servers) do
