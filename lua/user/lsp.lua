@@ -43,7 +43,7 @@ local lsp_defaults = {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function(client, bufnr)
     -- Keybindings are defined in mappings.lua
-    set_keymap(bufnr)
+    set_keymap(bufnr) -- Attach keymaps to the current buffer only
     -- Format on save
     if client.server_capabilities.documentFormattingProvider and not formatting_disabled[client.name] then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })

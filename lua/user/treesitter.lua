@@ -1,6 +1,9 @@
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
+    'c',
     'lua',
+    'vim',
+    'help',
     'html',
     'python',
     'haskell',
@@ -11,7 +14,9 @@ require('nvim-treesitter.configs').setup({
     'cpp',
     'markdown',
     'sql',
+    'query', -- a requirement of the playground
   },
+  auto_install = false,
   highlight = {
     enable = true,
   },
