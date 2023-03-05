@@ -56,3 +56,8 @@ cmd([[
 cmd([[
   au BufRead,BufNewFile *.core set filetype=yaml
 ]])
+
+-- Sleep files
+cmd([[
+  au BufRead,BufNewFile *.sl,*.cna set filetype=sleep
+]])

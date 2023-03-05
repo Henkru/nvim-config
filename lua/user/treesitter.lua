@@ -1,3 +1,14 @@
+require('nvim-treesitter.parsers').get_parser_configs().sleep = {
+  install_info = {
+    url = 'https://github.com/Henkru/tree-sitter-sleep',
+    files = { 'src/parser.c' },
+    branch = 'main',
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = 'sleep',
+}
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'c',
@@ -49,6 +60,8 @@ require('nvim-treesitter.configs').setup({
         ['ac'] = '@class.outer',
         ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
         ['as'] = { query = '@scope', query_group = 'locals', desc = 'Select language scope' },
+        ['am'] = '@comment.outer',
+        ['im'] = '@comment.inner',
       },
 
       selection_modes = {
