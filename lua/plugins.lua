@@ -106,9 +106,10 @@ packer.startup({ function(_)
   }
 
   use {
-    'henkru/onedark.nvim',
-    config = function() require 'user.onedark' end,
-    commit = '34a83c70b558f399e8bf7327f9130cbc15cf129a'
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function() require 'user.catppuccin' end,
+    commit = '6368edcd0b5e5cb5d9fb7cdee9d62cffe3e14f0e'
   }
 
   use {
@@ -135,17 +136,6 @@ packer.startup({ function(_)
     config = function() require('which-key').setup {} end,
     commit = 'e4fa445065a2bb0bbc3cca85346b67817f28e83e'
   }
-
-  -- use {
-  --   'ggandor/lightspeed.nvim',
-  --   commit = '299eefa6a9e2d881f1194587c573dad619fdb96f'
-  -- }
-
-  -- use {
-  --   'voldikss/vim-floaterm',
-  --   setup = function() require 'mappings'.floaterm() end,
-  --   commit = '06c73980682f61307e890fe652d1343be82e7ec7'
-  -- }
 
   -- LSP --
   use {

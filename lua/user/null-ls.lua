@@ -10,7 +10,7 @@ null_ls.setup({
     include_if_exists(null_ls.builtins.diagnostics.hadolint),
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.terraform_fmt,
-    null_ls.builtins.formatting.prettier,
+    -- null_ls.builtins.formatting.prettier,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.stylish_haskell,

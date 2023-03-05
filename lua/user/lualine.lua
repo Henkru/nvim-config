@@ -8,7 +8,7 @@ local lsp_status = {
 
 require('lualine').setup({
   options = {
-    theme = 'onedark',
+    theme = 'auto',
     globalstatus = true,
   },
   sections = {
