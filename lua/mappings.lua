@@ -202,4 +202,15 @@ M.cmp = function()
   }
 end
 
+M.treesitter = function()
+  local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+  vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next, { desc = 'Repeat last move' })
+  vim.keymap.set(
+    { 'n', 'x', 'o' },
+    ',',
+    ts_repeat_move.repeat_last_move_previous,
+    { desc = 'Repeat last move previous' }
+  )
+end
+
 return M

@@ -189,6 +189,17 @@ packer.startup({ function(_)
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require 'user.treesitter'
+      require 'mappings'.treesitter()
+    end,
+    commit = '4b30081d2736e09f90c890a8a7adfe4df36f5b36'
+  }
+
+  use {
     'nvim-treesitter/playground',
     after = 'nvim-treesitter',
     commit = '4044b53c4d4fcd7a78eae20b8627f78ce7dc6f56'
