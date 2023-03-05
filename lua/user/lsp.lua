@@ -121,7 +121,7 @@ if vim.fn.executable('lua-language-server') == 1 then
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
 
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     on_attach = lsp_defaults.on_attach,
     capabilities = lsp_defaults.capabilities,
     settings = {
