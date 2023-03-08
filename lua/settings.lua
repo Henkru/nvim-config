@@ -61,3 +61,8 @@ cmd([[
 cmd([[
   au BufRead,BufNewFile *.sl,*.cna set filetype=sleep
 ]])
+
+-- Malleable C2
+cmd([[
+  au BufRead,BufNewFile *.profile set filetype=malleable_c2
+]])

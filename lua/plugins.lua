@@ -131,6 +131,12 @@ packer.startup({ function(_)
     commit = 'fb027738340502b556c3f43051f113bcaa7e8e63'
   }
 
+  -- use {
+  --   'Vonr/align.nvim',
+  --   config = function() require 'mappings'.align() end,
+  --   commit = '2004d263bb1b1ec28e55cf56c35944ec4ea23f8b'
+  -- }
+
   -- LSP --
   use {
     'williamboman/mason.nvim',
