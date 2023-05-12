@@ -35,7 +35,7 @@ end
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 
 local formatting_disabled = {
-  sqls = true,
+  sqlls = true,
 }
 
 -- Global configuration to share between all the servers
@@ -86,7 +86,7 @@ local servers = {
   },
   jsonls = {},
   pyright = {},
-  sqls = {},
+  sqlls = {},
   terraformls = {},
   tsserver = {},
   yamlls = {
@@ -105,6 +105,7 @@ local servers = {
     filetypes = { 'text' },
   },
   svlangserver = {},
+  bashls = {},
 }
 
 for lsp, opts in pairs(servers) do

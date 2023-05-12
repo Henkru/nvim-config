@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local function include_if_exists(source)
   local command = source._opts.command
-  return vim.fn.executable(command) and source or nil
+  return vim.fn.executable(command) ~= 0 and source or nil
 end
 
 local null_ls = require('null-ls')
@@ -46,6 +46,7 @@ null_ls.setup({
         'align',
       },
     }),
+    null_ls.builtins.code_actions.shellcheck,
   },
   on_attach = lspconfig.util.default_config.on_attach,
 })
