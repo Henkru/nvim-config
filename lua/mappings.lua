@@ -233,4 +233,19 @@ M.align = function()
   end, NS) -- Aligns to a Lua pattern, looking left and with previews
 end
 
+M.easy_align = function()
+  local NS = { noremap = true, silent = true }
+  vim.keymap.set('v', 'ga', '<Plug>(EasyAlign)', NS)
+end
+
+M.chatgpt = function()
+  local gpt = require('user.chatgpt')
+  map('n', '<Leader>gp', gpt.prompt, silent, 'ChatGPT: Prompt')
+  map('v', '<Leader>gr', gpt.rephrase, silent, 'ChatGPT: Rephrase comment')
+end
+
+M.latex = function()
+  map('n', '<Leader>at', ':?tabular<CR>jv/tabular<CR>0:EasyAlign *&<CR>:noh<CR>', silent, 'Latex: Align table')
+end
+
 return M

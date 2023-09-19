@@ -1,0 +1,19 @@
+{
+  "rephrase": {
+    "type": "chat",
+    "opts": {
+      "template": "Rephrase and correct this code comment to standard {{lang}}:\n\n{{input}}",
+      "strategy": "replace",
+      "params": {
+        "model": "gpt-3.5-turbo"
+      }
+    },
+    "args": {
+      "lang": {
+        "type": "string",
+        "optional": "true",
+        "default": "english"
+      }
+    }
+  }
+}

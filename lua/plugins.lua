@@ -31,6 +31,11 @@ packer.startup({
       commit = '9ac3e9541bbabd9d73663d757e4fe48a675bb054'
     }
 
+    use {
+      'MunifTanjim/nui.nvim',
+      commit = '9e3916e784660f55f47daa6f26053ad044db5d6a'
+    }
+
     -- UI --
     use {
       'kyazdani42/nvim-web-devicons',
@@ -138,6 +143,11 @@ packer.startup({
     --   config = function() require 'mappings'.align() end,
     --   commit = '2004d263bb1b1ec28e55cf56c35944ec4ea23f8b'
     -- }
+    use {
+      'junegunn/vim-easy-align',
+      commit = '12dd6316974f71ce333e360c0260b4e1f81169c3',
+      config = function() require 'mappings'.easy_align() end,
+    }
 
     -- LSP --
     use {
@@ -289,6 +299,19 @@ packer.startup({
       'mfussenegger/nvim-dap-python',
       commit = '51ecb08dbff57fca8add396b93dc765aba262e0a',
     }
+
+    -- Automation --
+    use({
+      "jackMort/ChatGPT.nvim",
+      commit = 'ef0cf1f28a22bbf2e9be531f4856d2cace57e4b2',
+      config = function() require('user.chatgpt').setup() end,
+      setup = function() require 'mappings'.chatgpt() end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+      }
+    })
 
     if packer_bootstrap then
       require('packer').sync()

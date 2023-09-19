@@ -91,6 +91,9 @@ local servers = {
   tsserver = {},
   yamlls = {
     settings = {
+      yaml = {
+        keyOrdering = false,
+      },
       redhat = {
         telemetry = {
           enabled = false,
@@ -106,6 +109,15 @@ local servers = {
   },
   svlangserver = {},
   bashls = {},
+  rust_analyzer = {
+    settings = {
+      ['rust-analyzer'] = {
+        diagnostics = {
+          enable = false,
+        },
+      },
+    },
+  },
 }
 
 for lsp, opts in pairs(servers) do
