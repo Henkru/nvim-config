@@ -57,7 +57,7 @@ M.setup = function()
   vim.api.nvim_create_autocmd('FileType', {
     group = group,
     pattern = 'python',
-    command = ':lua require"user.dap.python"',
+    command = ':lua require"henkru.dap.python"',
   })
 end
 

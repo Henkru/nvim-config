@@ -10,7 +10,7 @@ M.enable_chatgpt = function()
   require('chatgpt').setup({
     api_key_cmd = 'op read op://Personal/ChatGPT-API/password',
     actions_paths = {
-      vim.fn.stdpath('config') .. '/lua/user/actions.json',
+      vim.fn.stdpath('config') .. '/lua/henkru/actions.json',
     },
   })
   enabled = true

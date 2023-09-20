@@ -1,5 +1,5 @@
-local grammarly = require('user.grammarly')
-local gpt = require('user.chatgpt')
+local grammarly = require('henkru.grammarly')
+local gpt = require('henkru.chatgpt')
 
 local lsp_status = {
   'lsp_progress',

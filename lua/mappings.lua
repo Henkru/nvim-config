@@ -103,7 +103,7 @@ M.telescope = function()
   map('n', '<Leader>ft', builtin.help_tags, noremap, 'Telescope: Help Tags')
   map('n', '<Leader>fT', ':Telescope <CR>', noremap, 'Telescope: Pickers')
   map('n', '<Leader>fh', function()
-    require('user.hoogle').list()
+    require('henkru.hoogle').list()
   end, noremap, 'Telescope: Hoogle')
   map('n', '<Leader>fr', builtin.lsp_references, noremap, 'Telescope: LSP References')
   map('n', '<Leader>fR', builtin.reloader, noremap, 'Telescope: Reloader')
@@ -239,7 +239,7 @@ M.easy_align = function()
 end
 
 M.chatgpt = function()
-  local gpt = require('user.chatgpt')
+  local gpt = require('henkru.chatgpt')
   map('n', '<Leader>gp', gpt.prompt, silent, 'ChatGPT: Prompt')
   map('v', '<Leader>gr', gpt.rephrase, silent, 'ChatGPT: Rephrase comment')
 end

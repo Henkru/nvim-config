@@ -19,7 +19,7 @@ local find_plugins = function(bufnr)
             (field)*
             (field
               name: (identifier) @field_name (#eq? @field_name "commit")
-              value: (string) @commit_hash 
+              value: (string) @commit_hash
             )
           )
         )
@@ -154,14 +154,14 @@ M.create_window_with_updates = function(bufnr)
     output_bufnr,
     'n',
     '<leader>g',
-    '<cmd>lua require "user.update".goto_diff()<cr>',
+    '<cmd>lua require "henkru.update".goto_diff()<cr>',
     { noremap = true }
   )
   vim.api.nvim_buf_set_keymap(
     output_bufnr,
     'n',
     '<leader>u',
-    string.format('<cmd>lua require "user.update".update_plugin_under_cursor(%i)<cr>', bufnr),
+    string.format('<cmd>lua require "henkru.update".update_plugin_under_cursor(%i)<cr>', bufnr),
     { noremap = true }
   )
 end

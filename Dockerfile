@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-ARG VERSION=master
+ARG VERSION=release-0.9
 
 RUN apk --no-cache add \
     autoconf \
@@ -8,7 +8,7 @@ RUN apk --no-cache add \
     cmake \
     ninja \
     coreutils \
-    curl \
+    wget \
     gettext-tiny-dev \
     git \
     libtool \

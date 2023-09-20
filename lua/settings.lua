@@ -49,7 +49,7 @@ cmd([[
 ]])
 
 cmd([[
-  au BufRead plugins.lua lua require 'user.update'
+  au BufRead plugins.lua lua require 'henkru.update'
 ]])
 
 -- Fusesoc .core files are yaml
@@ -66,3 +66,6 @@ cmd([[
 cmd([[
   au BufRead,BufNewFile *.profile set filetype=malleable_c2
 ]])
+
+-- Save Cmd
+require('henkru.save_cmd').setup()
