@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local ls = require('luasnip')
 
 local icons = {
   Text = '',

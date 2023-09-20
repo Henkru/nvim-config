@@ -303,6 +303,9 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.luasnip')
     end,
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
     run = 'make install_jsregexp',
     commit = '8efa4e402a24df6a4713a2ec653147c49e8f73de',
   },
