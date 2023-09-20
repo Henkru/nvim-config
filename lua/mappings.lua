@@ -78,7 +78,7 @@ M.lsp = function(bufnr)
 end
 
 M.lsp_global = function()
-  map('n', '<Leader>G', require('lspconfig')['grammarly'].manager.try_add, silent_noremap, 'Grammarly: Attach')
+  map('n', '<Leader>G', ':LspStart grammarly<CR>', silent, 'Grammarly: Attach')
 end
 
 M.nvimtree = function()

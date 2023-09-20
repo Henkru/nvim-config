@@ -105,7 +105,7 @@ local servers = {
     init_options = {
       clientId = 'client_BaDkMgx4X19X9UxxYRCXZo',
     },
-    filetypes = { 'text' },
+    autostart = false,
   },
   svlangserver = {},
   bashls = {},
