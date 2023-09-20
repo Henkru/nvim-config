@@ -277,6 +277,14 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.nvim-cmp')
     end,
+    dependencies = {
+      'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+    },
     commit = 'd153771162bd9795d9f7142df5c674b61066a585',
   },
 
@@ -295,7 +303,8 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.luasnip')
     end,
-    commit = 'b4bc24c4925aeb05fd47d2ee9b24b7f73f5d7e32',
+    run = 'make install_jsregexp',
+    commit = '0b4950a237ce441a6a3a947d501622453f6860ea',
   },
 
   {
