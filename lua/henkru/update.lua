@@ -1,4 +1,3 @@
-local q = require('vim.treesitter.query')
 local Job = require('plenary.job')
 
 local M = {}
@@ -8,34 +7,29 @@ local find_plugins = function(bufnr)
   local syntax_tree = language_tree:parse()
   local root = syntax_tree[1]:root()
 
-  local query = vim.treesitter.parse_query(
+  local query = vim.treesitter.query.parse(
     'lua',
     [[
-      (function_call
-        name: (identifier) @function_name (#eq? @function_name "use")
-        arguments: (arguments
-          (table_constructor
-            . (field value: (string) @plugin_name)
-            (field)*
-            (field
-              name: (identifier) @field_name (#eq? @field_name "commit")
-              value: (string) @commit_hash
-            )
-          )
+      (table_constructor
+        . (field value: (string) @plugin_name)
+        (field)*
+        (field
+          name: (identifier) @field_name (#eq? @field_name "commit")
+          value: (string) @commit_hash
         )
       )
   ]]
   )
   local result = {}
   for _, captures, _ in query:iter_matches(root, bufnr) do
-    local name = q.get_node_text(captures[2], bufnr):gsub('[\'"]', '')
-    result[name] = captures[4]
+    local name = vim.treesitter.get_node_text(captures[1], bufnr):gsub('[\'"]', '')
+    result[name] = captures[3]
   end
   return result
 end
 
 local find_plugin_path = function(name)
-  local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer'
+  local packer_path = vim.fn.stdpath('data') .. '/lazy'
   local splits = vim.split(name, '/')
   local folder_name = splits[#splits]
   local folders = vim.fs.find(folder_name, {
