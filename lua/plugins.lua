@@ -123,7 +123,6 @@ require('henkru.lazy').bootstrap().setup({
     'numtostr/comment.nvim',
     config = function()
       require('Comment').setup()
-      require('mappings').comment()
     end,
     commit = 'e1fe53117aab24c378d5e6deaad786789c360123',
   },

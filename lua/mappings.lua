@@ -85,11 +85,6 @@ M.nvimtree = function()
   map('n', '<Leader>t', ':NvimTreeToggle<CR>', silent, 'File Explorer: Toggle')
 end
 
-M.comment = function()
-  -- map('n', '<Leader>/', 'gcc', {})
-  -- map('v', '<Leader>/', 'gcc', {})
-end
-
 M.telescope = function()
   local builtin = require('telescope.builtin')
   map('n', '<Leader>ff', builtin.find_files, noremap, 'Telescope: Find Files')
@@ -213,29 +208,8 @@ M.treesitter = function()
   )
 end
 
-M.align = function()
-  local NS = { noremap = true, silent = true }
-  vim.keymap.set('n', 'gaw', function()
-    local a = require('align')
-    a.operator(a.align_to_string, { is_pattern = false, reverse = true, preview = true })
-  end, NS)
-  vim.keymap.set('v', 'aa', function()
-    require('align').align_to_char(1, true)
-  end, NS) -- Aligns to 1 character, looking left
-  vim.keymap.set('v', 'as', function()
-    require('align').align_to_char(2, true, true)
-  end, NS) -- Aligns to 2 characters, looking left and with previews
-  vim.keymap.set('v', 'aw', function()
-    require('align').align_to_string(false, true, true)
-  end, NS) -- Aligns to a string, looking left and with previews
-  vim.keymap.set('v', 'ar', function()
-    require('align').align_to_string(true, true, true)
-  end, NS) -- Aligns to a Lua pattern, looking left and with previews
-end
-
 M.easy_align = function()
-  local NS = { noremap = true, silent = true }
-  vim.keymap.set('v', 'ga', '<Plug>(EasyAlign)', NS)
+  map('v', 'ga', '<Plug>(EasyAlign)', silent_noremap, 'Easy Align')
 end
 
 M.chatgpt = function()
