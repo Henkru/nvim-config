@@ -118,6 +118,7 @@ local servers = {
       },
     },
   },
+  bufls = {},
 }
 
 for lsp, opts in pairs(servers) do
