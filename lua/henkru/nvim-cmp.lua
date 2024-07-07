@@ -30,7 +30,7 @@ local icons = {
 
 cmp.setup({
   completion = {
-    completeopt = 'menuone,noselect',
+    completeopt = 'menuone,noselect,noinsert',
     keyword_length = 3,
   },
   snippet = {

@@ -50,6 +50,12 @@ M.general = function()
   -- Move between tabs
   map('n', '<Right>', 'gt', noremap, 'Tab: Next')
   map('n', '<Left>', 'gT', noremap, 'Tab: Previous')
+
+  -- Move lines
+  map('n', '<Leader>k', ':m .-2<CR>==', noremap, 'Move line: Up')
+  map('n', '<Leader>j', ':m .+1<CR>==', noremap, 'Move line: Down')
+  map('v', '<Leader>k', ":m '<-2<CR>gv=gv", noremap, 'Move selection: Up')
+  map('v', '<Leader>j', ":m '>+1<CR>gv=gv", noremap, 'Move selection: Down')
 end
 
 M.lsp = function(bufnr)
@@ -68,10 +74,10 @@ M.lsp = function(bufnr)
   map('n', '<Leader>rn', vim.lsp.buf.rename, opts, 'LSP: Rename')
   map('n', '<Leader>ca', vim.lsp.buf.code_action, opts, 'LSP: Code Action')
   map('n', 'gr', vim.lsp.buf.references, opts, 'LSP: List References')
-  map('n', '<Leader>e', vim.diagnostic.open_float, opts, 'Diagnostic: Show in Floating Window')
   map('n', '[d', vim.diagnostic.goto_prev, opts, 'Diagnostic: Go Previous')
   map('n', ']d', vim.diagnostic.goto_next, opts, 'Diagnostic: Go Next')
-  map('n', '<Leader>q', vim.diagnostic.setloclist, opts, 'Diagnostic: Add to Location List')
+  map('n', '<Leader>e', vim.diagnostic.open_float, opts, 'Diagnostic: Show Error messages')
+  map('n', '<Leader>q', vim.diagnostic.setloclist, opts, 'Diagnostic: Open Quickfix list')
   map('n', '<Leader>F', function()
     vim.lsp.buf.format({ async = true })
   end, opts, 'LSP: Format Code')
@@ -147,54 +153,28 @@ end
 
 M.cmp = function()
   local cmp = require('cmp')
-  local ls = require('luasnip')
-  return {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
+  local luasnip = require('luasnip')
+
+  return cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-c>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
-    ['<C-j>'] = cmp.mapping(function(fallback)
-      if ls.expand_or_jumpable() then
-        ls.expand_or_jump()
-      else
-        fallback()
+
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+
+    ['<C-l>'] = cmp.mapping(function()
+      if luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
       end
     end, { 'i', 's' }),
-    ['<C-k>'] = cmp.mapping(function(fallback)
-      if ls.jumpable(-1) then
-        ls.jump(-1)
-      else
-        fallback()
+    ['<C-h>'] = cmp.mapping(function()
+      if luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
       end
     end, { 'i', 's' }),
-    ['<C-l>'] = function(fallback)
-      if ls.choice_active() then
-        ls.change_choice(1)
-      else
-        fallback()
-      end
-    end,
-  }
+  })
 end
 
 M.treesitter = function()
