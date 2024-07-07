@@ -68,11 +68,15 @@ require('telescope').setup({
         },
       },
     },
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown({}),
+    },
   },
 })
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('dap')
+require('telescope').load_extension('ui-select')
 
 if vim.fn.executable('hoogle') ~= 0 then
   require('telescope').load_extension('hoogle')

@@ -91,6 +91,11 @@ require('henkru.lazy').bootstrap().setup({
     commit = '313d2ea12ae59a1ca51b62bf01fc941a983d9c9c',
   },
 
+  {
+    'nvim-telescope/telescope-ui-select.nvim',
+    commit = '6e51d7da30bd139a6950adf2a47fda6df9fa06d2',
+  },
+
   -- General --
   {
     'lukas-reineke/indent-blankline.nvim',
