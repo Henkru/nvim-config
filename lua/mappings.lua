@@ -60,24 +60,26 @@ end
 
 M.lsp = function(bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
+  local ts = require('telescope.builtin')
 
-  map('n', 'gD', vim.lsp.buf.declaration, opts, 'LSP: Go Declaration')
-  map('n', 'gd', vim.lsp.buf.definition, opts, 'LSP: Go Definition')
-  map('n', 'gi', vim.lsp.buf.implementation, opts, 'LSP: Go Implementation')
-  map('n', '<Leader>hd', require('lsp_lines').toggle, opts, 'LSP: Toggle Lines')
-  map('n', '<Leader>hs', vim.lsp.buf.signature_help, opts, 'LSP: Show Signature')
-  map('n', 'K', vim.lsp.buf.hover, opts, 'LSP: Show Hover Information')
-  -- buf_set_keymap('n', '<Leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<Leader>wl', '<cmd>lua vim.lsp.buf.list_workspace_folders()<CR>', opts)
-  map('n', '<Leader>D', vim.lsp.buf.type_definition, opts, 'LSP: Go Type Definition')
-  map('n', '<Leader>rn', vim.lsp.buf.rename, opts, 'LSP: Rename')
-  map('n', '<Leader>ca', vim.lsp.buf.code_action, opts, 'LSP: Code Action')
-  map('n', 'gr', vim.lsp.buf.references, opts, 'LSP: List References')
   map('n', '[d', vim.diagnostic.goto_prev, opts, 'Diagnostic: Go Previous')
   map('n', ']d', vim.diagnostic.goto_next, opts, 'Diagnostic: Go Next')
+
+  map('n', 'gD', vim.lsp.buf.declaration, opts, 'LSP: Go Declaration')
+  map('n', 'gd', ts.lsp_definitions, opts, 'LSP: Go Definition')
+  map('n', 'gi', vim.lsp.buf.implementation, opts, 'LSP: Go Implementation')
+  map('n', '<Leader>D', vim.lsp.buf.type_definition, opts, 'LSP: Go Type Definition')
+
+  map('n', 'gr', ts.lsp_references, opts, 'LSP: List References')
+  map('n', 'K', vim.lsp.buf.hover, opts, 'LSP: Show Hover Information')
+  map('n', '<Leader>hs', vim.lsp.buf.signature_help, opts, 'LSP: Show Signature')
+
+  map('n', '<Leader>hd', require('lsp_lines').toggle, opts, 'LSP: Toggle Lines')
   map('n', '<Leader>e', vim.diagnostic.open_float, opts, 'Diagnostic: Show Error messages')
   map('n', '<Leader>q', vim.diagnostic.setloclist, opts, 'Diagnostic: Open Quickfix list')
+
+  map('n', '<Leader>rn', vim.lsp.buf.rename, opts, 'LSP: Rename')
+  map('n', '<Leader>ca', vim.lsp.buf.code_action, opts, 'LSP: Code Action')
   map('n', '<Leader>F', function()
     vim.lsp.buf.format({ async = true })
   end, opts, 'LSP: Format Code')
