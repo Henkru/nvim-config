@@ -37,6 +37,9 @@ require('nvim-treesitter.configs').setup({
     'sql',
     'query', -- a requirement of the playground
     'vimdoc',
+    'rust',
+    'go',
+    'bash',
   },
   auto_install = false,
   highlight = {
