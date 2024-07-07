@@ -20,6 +20,7 @@ opt.ignorecase = true     -- ignore case letters when search
 opt.smartcase = true      -- ignore lowercase for the whole pattern
 opt.linebreak = true      -- wrap on word boundary
 opt.signcolumn = 'yes'
+g.have_nerd_font = false
 
 -- Color --
 opt.termguicolors = true
