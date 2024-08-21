@@ -24,7 +24,7 @@ require('henkru.lazy').bootstrap().setup({
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require('henkru.lualine')
+      require('henkru.lualine').setup()
     end,
     commit = 'e20896769ca3cd7e623f0d9f0f68c2155e1eeee2',
   },

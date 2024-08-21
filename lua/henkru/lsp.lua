@@ -101,11 +101,15 @@ local servers = {
       },
     },
   },
-  grammarly = {
-    init_options = {
-      clientId = 'client_BaDkMgx4X19X9UxxYRCXZo',
+  ltex = {
+    settings = {
+      ltex = {
+        diagnosticSeverity = 'hint',
+        additionalRules = {
+          enablePickyRules = true,
+        },
+      },
     },
-    autostart = false,
   },
   svlangserver = {},
   bashls = {},
@@ -159,3 +163,36 @@ if vim.fn.executable('lua-language-server') == 1 then
     },
   })
 end
+
+-- Restart the LanguageTool LSP with the Premium features (cloud)
+vim.api.nvim_create_user_command('LspLtexCloud', function()
+  local Job = require('plenary.job')
+  local out, return_val = Job:new({
+    command = 'op',
+    args = { 'read', 'op://Personal/LanguageTool-API/password' },
+  }):sync()
+
+  P(out)
+  if return_val == 0 then
+    local key = out[1]
+    local config = vim.tbl_deep_extend('force', lsp_defaults, servers.ltex, {
+      settings = {
+        ltex = {
+          languageToolHttpServerUri = 'https://api.languagetoolplus.com/',
+          languageToolOrg = {
+            username = 'henri@nurmi.me',
+            apiKey = key,
+          },
+        },
+      },
+    })
+    lspconfig['ltex'].setup(config)
+    vim.cmd('LspRestart ltex')
+    require('henkru.lualine').ltex_cloud = true
+  end
+end, {})
+
+vim.api.nvim_create_user_command('LspDebug', function()
+  vim.lsp.set_log_level('debug')
+  require('vim.lsp.log').set_format_func(vim.inspect)
+end, {})
