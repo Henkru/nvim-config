@@ -47,7 +47,8 @@ nvimtree.setup({
   },
   filters = {
     dotfiles = false,
-    custom = { '.git', 'node_modules', '.cache' },
+    custom = { '.git', 'node_modules', '.cache', '.DS_Store' },
+    exclude = { '.github' },
   },
   disable_netrw = true,
   hijack_netrw = true,
