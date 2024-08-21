@@ -62,8 +62,12 @@ M.lsp = function(bufnr)
   local opts = { buffer = bufnr, noremap = true, silent = true }
   local ts = require('telescope.builtin')
 
-  map('n', '[d', vim.diagnostic.goto_prev, opts, 'Diagnostic: Go Previous')
-  map('n', ']d', vim.diagnostic.goto_next, opts, 'Diagnostic: Go Next')
+  map('n', '[d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, opts, 'Diagnostic: Go Previous')
+  map('n', ']d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, opts, 'Diagnostic: Go Next')
 
   map('n', 'gD', vim.lsp.buf.declaration, opts, 'LSP: Go Declaration')
   map('n', 'gd', ts.lsp_definitions, opts, 'LSP: Go Definition')
