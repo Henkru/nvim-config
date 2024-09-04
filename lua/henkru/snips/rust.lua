@@ -14,7 +14,7 @@ end
 
 return {
   s('test', {
-    t('#cfg!(test)'),
+    t('#[cfg(test)]'),
     newline('mod tests {'),
     newline('    use super::*;'),
     newline(''),
