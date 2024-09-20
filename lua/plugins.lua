@@ -360,4 +360,19 @@ require('henkru.lazy').bootstrap().setup({
       'nvim-telescope/telescope.nvim',
     },
   },
+
+  -- Leetcode --
+  {
+    'kawre/leetcode.nvim',
+    commit = '02fb2c855658ad6b60e43671f6b040c812181a1d',
+    opts = {
+      lang = 'rust',
+      arg = 'leetcode.nvim',
+      storage = {
+        home = vim.fn.stdpath('data') .. '/leetcode/problems',
+        cache = vim.fn.stdpath('cache') .. '/leetcode',
+      },
+    },
+  },
+
 })

@@ -10,7 +10,7 @@ null_ls.setup({
     include_if_exists(null_ls.builtins.diagnostics.hadolint),
     null_ls.builtins.formatting.autopep8,
     null_ls.builtins.formatting.terraform_fmt,
-    -- null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettier.with({ iletypes = { 'markdown' } }),
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.stylish_haskell,
@@ -47,6 +47,7 @@ null_ls.setup({
       },
     }),
     null_ls.builtins.code_actions.shellcheck,
+    null_ls.builtins.formatting.nixfmt,
   },
   on_attach = lspconfig.util.default_config.on_attach,
 })

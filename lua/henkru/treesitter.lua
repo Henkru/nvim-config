@@ -40,6 +40,7 @@ require('nvim-treesitter.configs').setup({
     'rust',
     'go',
     'bash',
+    'nix',
   },
   auto_install = false,
   highlight = {

@@ -123,6 +123,8 @@ local servers = {
     },
   },
   bufls = {},
+  gopls = {},
+  nil_ls = {},
 }
 
 for lsp, opts in pairs(servers) do

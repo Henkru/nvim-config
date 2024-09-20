@@ -35,7 +35,7 @@ opt.autoindent = true
 
 -- 2 spaces for selected filetypes
 cmd([[
-  autocmd FileType xml,html,xhtml,css,scss,haskell,javascript,javascriptreact,json,jsonc,lua,yaml,typescript,typescriptreact,systemverilog,verilog setlocal shiftwidth=2 tabstop=2
+  autocmd FileType xml,html,xhtml,css,scss,haskell,javascript,javascriptreact,json,jsonc,lua,yaml,typescript,typescriptreact,systemverilog,verilog,nix setlocal shiftwidth=2 tabstop=2
 ]])
 
 -- don't auto commenting new lines
