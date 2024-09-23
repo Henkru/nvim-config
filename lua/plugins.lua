@@ -82,7 +82,8 @@ require('henkru.lazy').bootstrap().setup({
 
   {
     'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     commit = 'cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b',
   },
 
@@ -197,12 +198,15 @@ require('henkru.lazy').bootstrap().setup({
   },
 
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     after = 'nvim-lspconfig',
     config = function()
       require('henkru.null-ls')
     end,
-    commit = '0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7',
+    commit = '9b98991e15dce8fc502993e23caac2528b8b667f',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   },
 
   {
