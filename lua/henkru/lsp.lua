@@ -125,6 +125,7 @@ local servers = {
   bufls = {},
   gopls = {},
   nil_ls = {},
+  sourcekit = {},
 }
 
 for lsp, opts in pairs(servers) do
