@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-ARG VERSION=release-0.9
+ARG VERSION=release-0.10
 
 RUN apk --no-cache add \
     autoconf \
