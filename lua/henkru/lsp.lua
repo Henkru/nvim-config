@@ -88,7 +88,7 @@ local servers = {
   pyright = {},
   sqlls = {},
   terraformls = {},
-  tsserver = {},
+  ts_ls = {},
   yamlls = {
     settings = {
       yaml = {
@@ -122,7 +122,7 @@ local servers = {
       },
     },
   },
-  bufls = {},
+  buf_ls = {},
   gopls = {},
   nil_ls = {},
   sourcekit = {},

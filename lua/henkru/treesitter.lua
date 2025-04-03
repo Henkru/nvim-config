@@ -1,25 +1,25 @@
--- require('nvim-treesitter.parsers').get_parser_configs().sleep = {
---   install_info = {
---     url = 'https://github.com/Henkru/tree-sitter-sleep',
---     files = { 'src/parser.c' },
---     branch = 'main',
---     generate_requires_npm = false,
---     requires_generate_from_grammar = false,
---   },
---   filetype = 'sleep',
--- }
---
--- require('nvim-treesitter.parsers').get_parser_configs().malleable_c2 = {
---   install_info = {
---     url = 'https://github.com/Henkru/tree-sitter-malleable-c2',
---     files = { 'src/parser.c' },
---     branch = 'main',
---     generate_requires_npm = false,
---     requires_generate_from_grammar = false,
---   },
---   filetype = 'malleable_c2',
--- }
---
+require('nvim-treesitter.parsers').get_parser_configs().sleep = {
+  install_info = {
+    url = 'https://github.com/Henkru/tree-sitter-sleep',
+    files = { 'src/parser.c' },
+    branch = 'main',
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = 'sleep',
+}
+
+require('nvim-treesitter.parsers').get_parser_configs().malleable_c2 = {
+  install_info = {
+    url = 'https://github.com/Henkru/tree-sitter-malleable-c2',
+    files = { 'src/parser.c' },
+    branch = 'main',
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = 'malleable_c2',
+}
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'c',
@@ -41,7 +41,7 @@ require('nvim-treesitter.configs').setup({
     'go',
     'bash',
     'nix',
-    'swift',
+    -- 'swift',
   },
   sync_install = false,
   auto_install = false,

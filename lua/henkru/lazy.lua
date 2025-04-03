@@ -1,6 +1,6 @@
 local M = {}
 
-local lazy_commit = '2a9354c7d2368d78cbd5575a51a2af5bd8a6ad01'
+local lazy_commit = '6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a'
 
 M.bootstrap = function()
   local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
