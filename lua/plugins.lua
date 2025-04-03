@@ -230,7 +230,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.treesitter')
     end,
-    commit = '997288c55253e27f782d991099490f80205d65bf',
+    commit = 'cfc6f2c117aaaa82f19bcce44deec2c194d900ab',
   },
 
   {
@@ -242,14 +242,6 @@ require('henkru.lazy').bootstrap().setup({
       'nvim-treesitter/nvim-treesitter',
     },
     commit = '9937e5e356e5b227ec56d83d0a9d0a0f6bc9cad4',
-  },
-
-  {
-    'nvim-treesitter/playground',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    commit = 'ba48c6a62a280eefb7c85725b0915e021a1a0749',
   },
 
   -- Debug --

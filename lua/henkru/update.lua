@@ -20,9 +20,10 @@ local find_plugins = function(bufnr)
       )
   ]]
   )
+
   local result = {}
   for _, captures, _ in query:iter_matches(root, bufnr) do
-    local name = vim.treesitter.get_node_text(captures[1], bufnr):gsub('[\'"]', '')
+    local name = vim.treesitter.get_node_text(captures[1][1], bufnr):gsub('[\'"]', '')
     result[name] = captures[3]
   end
   return result
