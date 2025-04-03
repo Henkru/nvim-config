@@ -38,7 +38,6 @@ M.general = function()
   map('v', '>', '>gv', noremap)
 
   -- Terminal related
-  -- map("n", "<Leader>Tt", ":terminal <CR>", {silent = true})
   map('t', '<Esc>', '<C-\\><C-n>', noremap)
 
   -- Don't replace the clipboard when changing the block
@@ -128,35 +127,6 @@ M.trouble = function()
   map('n', '<Leader>xq', '<cmd>Trouble quickfix<CR>', silent_noremap, 'Diagnostic: Quickfix')
 end
 
-M.debug = function()
-  local dap = require('dap')
-  -- Start / stop debug session
-  map('n', '<Leader>dd', dap.continue, silent_noremap, 'DAP: Start/Continue')
-  map('n', '<Leader>ds', dap.close, silent_noremap, 'DAP: Close')
-  map('n', '<Leader>dx', dap.terminate, silent_noremap, 'DAP: Terminate')
-
-  -- Step commands
-  map('n', '<F1>', dap.continue, silent_noremap, 'DAP: Continue')
-  map('n', '<F2>', dap.step_over, silent_noremap, 'DAP: Step Over')
-  map('n', '<F3>', dap.step_into, silent_noremap, 'DAP: Step Into')
-  map('n', '<F4>', dap.step_out, silent_noremap, 'DAP: Step Out')
-  map('n', '<Leader>dc', dap.run_to_cursor, silent_noremap, 'DAP: Run to Cursor')
-
-  -- Set breakpoints
-  map('n', '<Leader>db', dap.toggle_breakpoint, silent, 'DAP: Toggle Breakpoint')
-  map('n', '<Leader>dB', function()
-    dap.set_breakpoint(vim.fn.input('[Condition] > '))
-  end, silent, 'DAP: Set Conditional Breakpoint')
-end
-
-M.maximizer = function()
-  map('n', '<Leader>m', ':MaximizerToggle <CR>', silent, 'Window: Maximize')
-end
-
-M.floaterm = function()
-  map('n', '<Leader>T', ':FloatermToggle <CR>', silent, 'Terminal: Toggle')
-end
-
 M.cmp = function()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
@@ -196,12 +166,6 @@ end
 
 M.easy_align = function()
   map('v', 'ga', '<Plug>(EasyAlign)', silent_noremap, 'Easy Align')
-end
-
-M.chatgpt = function()
-  local gpt = require('henkru.chatgpt')
-  map('n', '<Leader>gp', gpt.prompt, silent, 'ChatGPT: Prompt')
-  map('v', '<Leader>gr', gpt.rephrase, silent, 'ChatGPT: Rephrase comment')
 end
 
 M.latex = function()

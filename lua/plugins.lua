@@ -5,16 +5,6 @@ require('henkru.lazy').bootstrap().setup({
     commit = '857c5ac632080dba10aae49dba902ce3abf91b35',
   },
 
-  {
-    'MunifTanjim/nui.nvim',
-    commit = '8d3bce9764e627b62b07424e0df77f680d47ffdb',
-  },
-
-  {
-    'nvim-neotest/nvim-nio',
-    commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662',
-  },
-
   -- UI --
   {
     'kyazdani42/nvim-web-devicons',
@@ -69,7 +59,6 @@ require('henkru.lazy').bootstrap().setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzf-native.nvim',
-      'nvim-telescope/telescope-dap.nvim',
       'henkru/telescope-hoogle.nvim',
     },
     commit = 'a4ed82509cecc56df1c7138920a1aeaf246c0ac5',
@@ -84,11 +73,6 @@ require('henkru.lazy').bootstrap().setup({
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     commit = '1f08ed60cafc8f6168b72b80be2b2ea149813e55',
-  },
-
-  {
-    'nvim-telescope/telescope-dap.nvim',
-    commit = '313d2ea12ae59a1ca51b62bf01fc941a983d9c9c',
   },
 
   {
@@ -119,14 +103,6 @@ require('henkru.lazy').bootstrap().setup({
       require('henkru.catppuccin')
     end,
     commit = '5b5e3aef9ad7af84f463d17b5479f06b87d5c429',
-  },
-
-  {
-    'szw/vim-maximizer',
-    config = function()
-      require('mappings').maximizer()
-    end,
-    commit = '2e54952fe91e140a2e69f35f22131219fcd9c5f1',
   },
 
   {
@@ -244,35 +220,6 @@ require('henkru.lazy').bootstrap().setup({
     commit = '9937e5e356e5b227ec56d83d0a9d0a0f6bc9cad4',
   },
 
-  -- Debug --
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('henkru.dap').setup()
-    end,
-    commit = '7aade9e99bef5f0735cf966e715b3ce45515d786',
-  },
-
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    commit = 'df66808cd78b5a97576bbaeee95ed5ca385a9750',
-  },
-
-  {
-    'rcarriga/nvim-dap-ui',
-    commit = 'bc81f8d3440aede116f821114547a476b082b319',
-  },
-
-  {
-    'nvim-telescope/telescope-dap.nvim',
-    commit = '783366bd6c1e7fa0a5c59c07db37f49c805a28df',
-  },
-
-  {
-    'mfussenegger/nvim-dap-python',
-    commit = '34282820bb713b9a5fdb120ae8dd85c2b3f49b51',
-  },
-
   -- Autocompletion --
   {
     'hrsh7th/nvim-cmp',
@@ -330,40 +277,5 @@ require('henkru.lazy').bootstrap().setup({
   {
     'rafamadriz/friendly-snippets',
     commit = 'efff286dd74c22f731cdec26a70b46e5b203c619',
-  },
-
-  -- Languages --
-  {
-    'google/vim-jsonnet',
-    commit = '4ebc6619ddce5d032a985b42a9864154c3d20e4a',
-  },
-
-  -- Automation --
-  {
-    'jackMort/ChatGPT.nvim',
-    commit = '5b6d296eefc75331e2ff9f0adcffbd7d27862dd6',
-    config = function()
-      require('henkru.chatgpt').setup()
-      require('mappings').chatgpt()
-    end,
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-  },
-
-  -- Leetcode --
-  {
-    'kawre/leetcode.nvim',
-    commit = 'db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951',
-    opts = {
-      lang = 'rust',
-      arg = 'leetcode.nvim',
-      storage = {
-        home = vim.fn.stdpath('data') .. '/leetcode/problems',
-        cache = vim.fn.stdpath('cache') .. '/leetcode',
-      },
-    },
   },
 })
