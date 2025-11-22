@@ -9,6 +9,7 @@ M.setup = function()
     timer = { spinner = 500 },
     spinner_symbols = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
   }
+  local codecompanion = require('henkru.lualine-code-companion')
 
   require('lualine').setup({
     options = {
@@ -23,6 +24,7 @@ M.setup = function()
           end,
           color = { fg = '#ff0000', gui = 'bold' },
         },
+        codecompanion,
         lsp_status,
         'encoding',
         'fileformat',

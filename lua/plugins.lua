@@ -278,4 +278,17 @@ require('henkru.lazy').bootstrap().setup({
     'rafamadriz/friendly-snippets',
     commit = 'efff286dd74c22f731cdec26a70b46e5b203c619',
   },
+
+  -- LLM --
+  {
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('henkru.codecompanion')
+    end,
+    commit = 'b02a7da50e8d1ee473a31f79152dcdf8f7abf5d5',
+  },
 })

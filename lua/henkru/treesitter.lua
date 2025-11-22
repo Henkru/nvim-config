@@ -34,6 +34,7 @@ require('nvim-treesitter.configs').setup({
     'dockerfile',
     'cpp',
     'markdown',
+    'markdown_inline',
     'sql',
     'query', -- a requirement of the playground
     'vimdoc',
