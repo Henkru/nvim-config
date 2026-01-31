@@ -1,4 +1,3 @@
-local lspconfig = require('lspconfig')
 local set_keymap = require('mappings').lsp
 
 require('mason-lspconfig').setup({
@@ -84,8 +83,13 @@ local lsp_defaults = {
   end,
 }
 
--- Set the global configuration
-lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, lsp_defaults)
+local function setup_server(name, opts)
+  local config = vim.tbl_deep_extend('force', lsp_defaults, opts or {})
+  local ok = pcall(vim.lsp.config, name, config)
+  if ok then
+    vim.lsp.enable(name)
+  end
+end
 
 --                           --
 -- General Language Servers  --
@@ -149,9 +153,7 @@ local servers = {
 }
 
 for lsp, opts in pairs(servers) do
-  if lspconfig[lsp] ~= nil then
-    lspconfig[lsp].setup(vim.tbl_deep_extend('force', lsp_defaults, opts))
-  end
+  setup_server(lsp, opts)
 end
 
 --                           --
@@ -162,9 +164,7 @@ if vim.fn.executable('lua-language-server') == 1 then
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
 
-  lspconfig.lua_ls.setup({
-    on_attach = lsp_defaults.on_attach,
-    capabilities = lsp_defaults.capabilities,
+  setup_server('lua_ls', {
     settings = {
       Lua = {
         runtime = {
@@ -209,7 +209,7 @@ vim.api.nvim_create_user_command('LspLtexCloud', function()
         },
       },
     })
-    lspconfig['ltex'].setup(config)
+    vim.lsp.config('ltex', config)
     vim.cmd('LspRestart ltex')
     require('henkru.lualine').ltex_cloud = true
   end

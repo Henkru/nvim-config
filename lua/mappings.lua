@@ -92,6 +92,25 @@ M.lsp_global = function()
   map('n', '<Leader>G', ':LspLtexCloud<CR>', silent, 'LanguageTool: Enable Cloud')
 end
 
+M.dap = function(helpers)
+  local dap = require('dap')
+  local dapui = require('dapui')
+  local launch_current = helpers and helpers.launch_current or dap.continue
+
+  map('n', '<F5>', launch_current, silent_noremap, 'DAP: Continue')
+  map('n', '<F10>', dap.step_over, silent_noremap, 'DAP: Step Over')
+  map('n', '<F11>', dap.step_into, silent_noremap, 'DAP: Step Into')
+  map('n', '<F12>', dap.step_out, silent_noremap, 'DAP: Step Out')
+
+  map('n', '<Leader>b', dap.toggle_breakpoint, silent_noremap, 'DAP: Toggle Breakpoint')
+  map('n', '<Leader>B', function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+  end, silent_noremap, 'DAP: Conditional Breakpoint')
+
+  map('n', '<Leader>dr', dap.repl.open, silent_noremap, 'DAP: Open REPL')
+  map('n', '<Leader>du', dapui.toggle, silent_noremap, 'DAP: Toggle UI')
+end
+
 M.nvimtree = function()
   map('n', '<Leader>t', ':NvimTreeToggle<CR>', silent, 'File Explorer: Toggle')
 end

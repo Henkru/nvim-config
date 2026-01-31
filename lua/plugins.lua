@@ -143,12 +143,12 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.mason')
     end,
-    commit = 'fc98833b6da5de5a9c5b1446ac541577059555be',
+    commit = '44d1e90e1f66e077268191e3ee9d2ac97cc18e65',
   },
 
   {
     'williamboman/mason-lspconfig.nvim',
-    commit = '1a31f824b9cd5bc6f342fc29e9a53b60d74af245',
+    commit = 'c953789db7fd28eafe5eb5659846d34b5024b3cc',
   },
 
   {
@@ -161,7 +161,7 @@ require('henkru.lazy').bootstrap().setup({
       'hrsh7th/cmp-nvim-lsp',
       'nvim-cmp',
     },
-    commit = '40f120c10ea4b87311175539a183c3b75eab95a3',
+    commit = '3f58aeca0c6ece8a9fb8782ea3fcb6024f285be3',
   },
 
   {
@@ -169,7 +169,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.lsp_signature')
     end,
-    commit = 'b58cca003d1d3311213d6db0352f58d8e57bfff0',
+    commit = '0efb088dce050d38a3608ee69f80f2a62cf9849c',
   },
 
   {
@@ -177,7 +177,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.null-ls')
     end,
-    commit = 'a117163db44c256d53c3be8717f3e1a2a28e6299',
+    commit = '3c206dfedf5f1385e9d29f85ffaec7874358592a',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
@@ -198,6 +198,46 @@ require('henkru.lazy').bootstrap().setup({
       require('lsp_lines').setup()
     end,
     commit = 'a92c755f182b89ea91bd8a6a2227208026f27b4d',
+  },
+
+  -- DAP --
+  {
+    'mfussenegger/nvim-dap',
+    config = function()
+      require('henkru.dap')
+    end,
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+      'jay-babu/mason-nvim-dap.nvim',
+    },
+    commit = 'e47878dcf1ccc30136b30d19ab19fe76946d61cd',
+  },
+
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+    },
+    commit = 'cf91d5e2d07c72903d052f5207511bf7ecdb7122',
+  },
+
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    commit = 'fbdb48c2ed45f4a8293d0d483f7730d24467ccb6',
+  },
+
+  {
+    'jay-babu/mason-nvim-dap.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+    },
+    commit = '9a10e096703966335bd5c46c8c875d5b0690dade',
+  },
+
+  {
+    'nvim-neotest/nvim-nio',
+    commit = '21f5324bfac14e22ba26553caf69ec76ae8a7662',
   },
 
   -- Treesitter --
@@ -239,7 +279,7 @@ require('henkru.lazy').bootstrap().setup({
 
   {
     'hrsh7th/cmp-nvim-lsp',
-    commit = 'a8912b88ce488f411177fc8aed358b04dc246d7b',
+    commit = 'cbc7b02bb99fae35cb42f514762b89b5126651ef',
   },
 
   {
