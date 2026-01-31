@@ -1,4 +1,7 @@
-require('nvim-treesitter.parsers').get_parser_configs().sleep = {
+local parsers = require('nvim-treesitter.parsers')
+local parser_config = parsers.get_parser_configs and parsers.get_parser_configs() or parsers
+
+parser_config.sleep = {
   install_info = {
     url = 'https://github.com/Henkru/tree-sitter-sleep',
     files = { 'src/parser.c' },
@@ -9,7 +12,7 @@ require('nvim-treesitter.parsers').get_parser_configs().sleep = {
   filetype = 'sleep',
 }
 
-require('nvim-treesitter.parsers').get_parser_configs().malleable_c2 = {
+parser_config.malleable_c2 = {
   install_info = {
     url = 'https://github.com/Henkru/tree-sitter-malleable-c2',
     files = { 'src/parser.c' },
@@ -20,7 +23,7 @@ require('nvim-treesitter.parsers').get_parser_configs().malleable_c2 = {
   filetype = 'malleable_c2',
 }
 
-require('nvim-treesitter.configs').setup({
+require('nvim-treesitter').setup({
   ensure_installed = {
     'c',
     'lua',

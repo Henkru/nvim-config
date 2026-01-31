@@ -2,13 +2,13 @@ require('henkru.lazy').bootstrap().setup({
   -- Meta --
   {
     'nvim-lua/plenary.nvim',
-    commit = '857c5ac632080dba10aae49dba902ce3abf91b35',
+    commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509',
   },
 
   -- UI --
   {
     'kyazdani42/nvim-web-devicons',
-    commit = '4c3a5848ee0b09ecdea73adcd2a689190aeb728c',
+    commit = '803353450c374192393f5387b6a0176d0972b848',
   },
 
   {
@@ -16,7 +16,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.lualine').setup()
     end,
-    commit = '1517caa8fff05e4b4999857319d3b0609a7f57fa',
+    commit = '47f91c416daef12db467145e16bed5bbfe00add8',
   },
 
   {
@@ -38,7 +38,7 @@ require('henkru.lazy').bootstrap().setup({
       require('henkru.nvimtree')
       require('mappings').nvimtree()
     end,
-    commit = '44d9b58f11d5a426c297aafd0be1c9d45617a849',
+    commit = '037d89e60fb01a6c11a48a19540253b8c72a3c32',
   },
 
   {
@@ -46,7 +46,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.incline')
     end,
-    commit = '27040695b3bbfcd3257669037bd008d1a892831d',
+    commit = '8b54c59bcb23366645ae10edca6edfb9d3a0853e',
   },
 
   -- Telescope --
@@ -61,7 +61,7 @@ require('henkru.lazy').bootstrap().setup({
       'nvim-telescope/telescope-fzf-native.nvim',
       'henkru/telescope-hoogle.nvim',
     },
-    commit = 'a4ed82509cecc56df1c7138920a1aeaf246c0ac5',
+    commit = 'ad7d9580338354ccc136e5b8f0aa4f880434dcdc',
   },
 
   {
@@ -72,7 +72,7 @@ require('henkru.lazy').bootstrap().setup({
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-    commit = '1f08ed60cafc8f6168b72b80be2b2ea149813e55',
+    commit = '6fea601bd2b694c6f2ae08a6c6fab14930c60e2c',
   },
 
   {
@@ -94,7 +94,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('gitsigns').setup({})
     end,
-    commit = '3c76f7fabac723aa682365ef782f88a83ccdb4ac',
+    commit = 'abf82a65f185bd54adc0679f74b7d6e1ada690c9',
   },
 
   {
@@ -102,7 +102,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.catppuccin')
     end,
-    commit = '5b5e3aef9ad7af84f463d17b5479f06b87d5c429',
+    commit = 'beaf41a30c26fd7d6c386d383155cbd65dd554cd',
   },
 
   {
@@ -118,7 +118,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('nvim-autopairs').setup({})
     end,
-    commit = '84a81a7d1f28b381b32acf1e8fe5ff5bef4f7968',
+    commit = '59bce2eef357189c3305e25bc6dd2d138c1683f5',
   },
 
   {
@@ -126,7 +126,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('which-key').setup({})
     end,
-    commit = '370ec46f710e058c9c1646273e6b225acf47cbed',
+    commit = '3aab2147e74890957785941f0c1ad87d0a44c15a',
   },
 
   {
@@ -189,7 +189,7 @@ require('henkru.lazy').bootstrap().setup({
       require('trouble').setup({})
       require('mappings').trouble()
     end,
-    commit = '85bedb7eb7fa331a2ccbecb9202d8abba64d37b3',
+    commit = 'bd67efe408d4816e25e8491cc5ad4088e708a69a',
   },
 
   {
@@ -246,7 +246,7 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.treesitter')
     end,
-    commit = 'cfc6f2c117aaaa82f19bcce44deec2c194d900ab',
+    commit = '4967fa48b0fe7a7f92cee546c76bb4bb61bb14d5',
   },
 
   {
@@ -257,7 +257,7 @@ require('henkru.lazy').bootstrap().setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
-    commit = '9937e5e356e5b227ec56d83d0a9d0a0f6bc9cad4',
+    commit = 'a0e182ae21fda68c59d1f36c9ed45600aef50311',
   },
 
   -- Autocompletion --
@@ -274,7 +274,7 @@ require('henkru.lazy').bootstrap().setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
     },
-    commit = '059e89495b3ec09395262f16b1ad441a38081d04',
+    commit = 'da88697d7f45d16852c6b2769dc52387d1ddc45f',
   },
 
   {
@@ -296,7 +296,7 @@ require('henkru.lazy').bootstrap().setup({
       'rafamadriz/friendly-snippets',
     },
     build = 'make install_jsregexp',
-    commit = 'c9b9a22904c97d0eb69ccb9bab76037838326817',
+    commit = 'dae4f5aaa3574bd0c2b9dd20fb9542a02c10471c',
   },
 
   {
@@ -306,17 +306,17 @@ require('henkru.lazy').bootstrap().setup({
 
   {
     'hrsh7th/cmp-path',
-    commit = 'c6635aae33a50d6010bf1aa756ac2398a2d54c32',
+    commit = 'c642487086dbd9a93160e1679a1327be111cbc25',
   },
 
   {
     'hrsh7th/cmp-nvim-lua',
-    commit = 'f12408bdb54c39c23e67cab726264c10db33ada8',
+    commit = 'e3a22cb071eb9d6508a156306b102c45cd2d573d',
   },
 
   {
     'rafamadriz/friendly-snippets',
-    commit = 'efff286dd74c22f731cdec26a70b46e5b203c619',
+    commit = '6cd7280adead7f586db6fccbd15d2cac7e2188b9',
   },
 
   -- LLM --
@@ -329,6 +329,6 @@ require('henkru.lazy').bootstrap().setup({
     config = function()
       require('henkru.codecompanion')
     end,
-    commit = 'b02a7da50e8d1ee473a31f79152dcdf8f7abf5d5',
+    commit = 'f61dbb22439386585a514d15be713c355f830e49',
   },
 })

@@ -173,7 +173,10 @@ M.cmp = function()
 end
 
 M.treesitter = function()
-  local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+  local ok, ts_repeat_move = pcall(require, 'nvim-treesitter-textobjects.repeatable_move')
+  if not ok then
+    return
+  end
   vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next, { desc = 'Repeat last move' })
   vim.keymap.set(
     { 'n', 'x', 'o' },
