@@ -8,6 +8,7 @@ local function map(mode, lhs, rhs, opts, desc)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+-- General
 M.general = function()
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { silent = true }, 'Clear search highlight')
 
@@ -21,6 +22,8 @@ M.general = function()
 
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 end
+
+-- Telescope
 
 M.telescope = function()
   local builtin = require('telescope.builtin')
@@ -42,6 +45,8 @@ M.telescope = function()
   map('n', '<leader>fk', builtin.keymaps, nil, 'Telescope: Key Maps')
 end
 
+-- LSP
+
 M.lsp = function(bufnr)
   local opts = { buffer = bufnr, silent = true }
 
@@ -61,6 +66,8 @@ M.lsp = function(bufnr)
   map('n', '<leader>e', vim.diagnostic.open_float, opts, 'Diagnostic: Float')
   map('n', '<leader>q', vim.diagnostic.setloclist, opts, 'Diagnostic: Loclist')
 end
+
+-- Completion
 
 M.cmp = function()
   local cmp = require('cmp')
@@ -85,6 +92,8 @@ M.cmp = function()
   })
 end
 
+-- Treesitter
+
 M.treesitter = function()
   local ok, ts_repeat_move = pcall(require, 'nvim-treesitter-textobjects.repeatable_move')
   if not ok then
@@ -100,9 +109,13 @@ M.treesitter = function()
   )
 end
 
+-- Editing
+
 M.easy_align = function()
   map('v', 'ga', '<Plug>(EasyAlign)', { silent = true }, 'Easy Align')
 end
+
+-- DAP
 
 M.dap = function(helpers)
   local dap = require('dap')
@@ -122,6 +135,8 @@ M.dap = function(helpers)
   map('n', '<leader>dr', dap.repl.open, { silent = true, noremap = true }, 'DAP: Open REPL')
   map('n', '<leader>du', dapui.toggle, { silent = true, noremap = true }, 'DAP: Toggle UI')
 end
+
+-- Diagnostics UI
 
 M.trouble = function()
   map('n', '<leader>xx', '<cmd>Trouble<CR>', { silent = true, noremap = true }, 'Diagnostic: Toggle')

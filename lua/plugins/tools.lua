@@ -5,10 +5,6 @@ return {
     event = 'VimEnter',
     dependencies = {
       {
-        'nvim-lua/plenary.nvim',
-        commit = '50012918b2fc8357b87cff2a7f7f0446e47da174',
-      },
-      {
         'nvim-telescope/telescope-fzf-native.nvim',
         commit = '6fea601bd2b694c6f2ae08a6c6fab14930c60e2c',
         build = 'make',

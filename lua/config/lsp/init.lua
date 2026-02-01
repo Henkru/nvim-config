@@ -1,11 +1,9 @@
 local keymaps = require('keymaps')
+local M = {}
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
-  callback = function(event)
-    keymaps.lsp(event.buf)
-  end,
-})
+M.on_attach = function(_, bufnr)
+  keymaps.lsp(bufnr)
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
@@ -15,6 +13,7 @@ end
 
 local defaults = {
   capabilities = capabilities,
+  on_attach = M.on_attach,
 }
 
 -- Use {} for default server config or require(...) for custom settings
@@ -30,7 +29,6 @@ local servers = {
   nil_ls = {},
   pyright = {},
   rust_analyzer = require('config.lsp.servers.rust_analyzer'),
-  sourcekit = {},
   sqlls = {},
   svlangserver = {},
   terraformls = {},
@@ -43,3 +41,5 @@ for name, opts in pairs(servers) do
   vim.lsp.config(name, config)
   vim.lsp.enable(name)
 end
+
+return M

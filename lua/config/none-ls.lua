@@ -1,5 +1,5 @@
-local lspconfig = require('lspconfig')
 local null_ls = require('null-ls')
+local lsp = require('config.lsp')
 
 null_ls.setup({
   sources = {
@@ -42,5 +42,5 @@ null_ls.setup({
     }),
     null_ls.builtins.formatting.nixfmt,
   },
-  on_attach = lspconfig.util.default_config.on_attach,
+  on_attach = lsp.on_attach,
 })
