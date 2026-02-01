@@ -17,7 +17,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    commit = 'c953789db7fd28eafe5eb5659846d34b5024b3cc',
+    commit = 'f2fa60409630ec2d24acf84494fb55e1d28d593c',
     config = function()
       require('mason-lspconfig').setup({
         ensure_installed = {
@@ -32,7 +32,6 @@ return {
           'nil_ls',
           'pyright',
           'rust_analyzer',
-          'sourcekit',
           'sqlls',
           'svlangserver',
           'terraformls',
@@ -45,7 +44,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    commit = '3f58aeca0c6ece8a9fb8782ea3fcb6024f285be3',
+    commit = '5bfcc89fd155b4ffc02d18ab3b7d19c2d4e246a7',
     config = function()
       require('config.lsp')
     end,

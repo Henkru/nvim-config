@@ -1,7 +1,7 @@
 return {
   {
     'nvim-lua/plenary.nvim',
-    commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509',
+    commit = '50012918b2fc8357b87cff2a7f7f0446e47da174',
   },
   {
     'nvim-neotest/nvim-nio',

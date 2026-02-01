@@ -1,12 +1,12 @@
 return {
   {
     'kyazdani42/nvim-web-devicons',
-    commit = '803353450c374192393f5387b6a0176d0972b848',
+    commit = '5b9067899ee6a2538891573500e8fd6ff008440f',
   },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    commit = 'beaf41a30c26fd7d6c386d383155cbd65dd554cd',
+    commit = 'cb5665990a797b102715188e73c44c3931b3b42e',
     priority = 1000,
     config = function()
       require('catppuccin').setup({

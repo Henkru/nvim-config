@@ -1,12 +1,12 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    commit = 'ad7d9580338354ccc136e5b8f0aa4f880434dcdc',
+    commit = '3333a52ff548ba0a68af6d8da1e54f9cd96e9179',
     event = 'VimEnter',
     dependencies = {
       {
         'nvim-lua/plenary.nvim',
-        commit = 'b9fd5226c2f76c951fc8ed5923d85e4de065e509',
+        commit = '50012918b2fc8357b87cff2a7f7f0446e47da174',
       },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
