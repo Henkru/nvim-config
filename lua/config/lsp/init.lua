@@ -1,8 +1,24 @@
 local keymaps = require('keymaps')
 local M = {}
 
-M.on_attach = function(_, bufnr)
+local format_group = vim.api.nvim_create_augroup('LspFormatting', {})
+local formatting_disabled = {
+  clangd = true,
+}
+
+M.on_attach = function(client, bufnr)
   keymaps.lsp(bufnr)
+
+  if client and client.server_capabilities.documentFormattingProvider and not formatting_disabled[client.name] then
+    vim.api.nvim_clear_autocmds({ group = format_group, buffer = bufnr })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = format_group,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -20,7 +36,7 @@ local defaults = {
 local servers = {
   bashls = {},
   buf_ls = {},
-  clangd = {},
+  clangd = require('config.lsp.servers.clangd'),
   dockerls = {},
   gopls = {},
   jsonls = {},
