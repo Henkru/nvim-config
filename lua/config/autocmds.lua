@@ -8,6 +8,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+require('config.save_cmd')
+
 vim.filetype.add({
   extension = {
     sl = 'sleep',
