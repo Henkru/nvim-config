@@ -97,4 +97,8 @@ M.treesitter = function()
   )
 end
 
+M.easy_align = function()
+  map('v', 'ga', '<Plug>(EasyAlign)', { silent = true }, 'Easy Align')
+end
+
 return M
