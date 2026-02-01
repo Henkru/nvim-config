@@ -9,5 +9,6 @@ end
 extend(require('plugins.core'))
 extend(require('plugins.ui'))
 extend(require('plugins.lsp'))
+extend(require('plugins.tools'))
 
 return plugins

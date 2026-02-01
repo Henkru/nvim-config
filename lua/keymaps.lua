@@ -19,6 +19,26 @@ M.general = function()
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 end
 
+M.telescope = function()
+  local builtin = require('telescope.builtin')
+  map('n', '<leader>ff', builtin.find_files, nil, 'Telescope: Find Files')
+  map('n', '<leader>fg', builtin.live_grep, nil, 'Telescope: Live Grep')
+  map('n', '<leader>fb', builtin.buffers, nil, 'Telescope: Buffers')
+  map('n', '<leader>fd', builtin.lsp_definitions, nil, 'Telescope: LSP Definitions')
+  map('n', '<leader>fi', builtin.lsp_implementations, nil, 'Telescope: LSP Implementations')
+  map('n', '<leader>fn', function()
+    builtin.find_files({ cwd = vim.fn.stdpath('config') })
+  end, nil, 'Telescope: Neovim Config')
+  map('n', '<leader>ft', builtin.help_tags, nil, 'Telescope: Help Tags')
+  map('n', '<leader>fT', '<cmd>Telescope<CR>', nil, 'Telescope: Pickers')
+  map('n', '<leader>fr', builtin.lsp_references, nil, 'Telescope: LSP References')
+  map('n', '<leader>fR', builtin.reloader, nil, 'Telescope: Reloader')
+  map('n', '<leader>fsd', builtin.lsp_document_symbols, nil, 'Telescope: LSP Document Symbols')
+  map('n', '<leader>fsw', builtin.lsp_workspace_symbols, nil, 'Telescope: LSP Workspace Symbols')
+  map('n', '<leader>/', builtin.current_buffer_fuzzy_find, nil, 'Telescope: Current Buffer')
+  map('n', '<leader>fk', builtin.keymaps, nil, 'Telescope: Key Maps')
+end
+
 M.lsp = function(bufnr)
   local opts = { buffer = bufnr, silent = true }
 
