@@ -18,9 +18,10 @@ opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Editor behavior
 opt.mouse = 'a'
 opt.breakindent = true
-opt.undofile = true
+opt.undofile = false
 opt.ignorecase = true
 opt.smartcase = true
+opt.showmatch = true
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.inccommand = 'split'

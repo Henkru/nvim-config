@@ -8,6 +8,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = group,
+  desc = 'Disable comment continuation on new lines',
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+  end,
+})
+
 require('config.save_cmd')
 
 vim.filetype.add({

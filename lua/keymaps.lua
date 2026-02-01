@@ -10,6 +10,8 @@ end
 
 -- General
 M.general = function()
+  map('v', 'p', '"_dP', { noremap = true }, 'Paste without yanking')
+
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { silent = true }, 'Clear search highlight')
 
   map('n', '<C-h>', '<C-w><C-h>', { silent = true }, 'Window: Left')
@@ -17,8 +19,19 @@ M.general = function()
   map('n', '<C-j>', '<C-w><C-j>', { silent = true }, 'Window: Down')
   map('n', '<C-k>', '<C-w><C-k>', { silent = true }, 'Window: Up')
 
+  map('n', 'c', '"_c', { noremap = true }, 'Change without yanking')
+  map('n', 'C', '"_C', { noremap = true }, 'Change line without yanking')
+  map('n', 'cc', '"_cc', { noremap = true }, 'Change line without yanking')
+  map('n', 'x', '"_x', { noremap = true }, 'Delete char without yanking')
+  map('x', 'c', '"_c', { noremap = true }, 'Change without yanking')
+  map('x', 'x', '"_x', { noremap = true }, 'Delete without yanking')
+
   map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', { silent = true }, 'Buffer: Next')
   map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', { silent = true }, 'Buffer: Previous')
+
+  map('n', '<C-n>', '<cmd>enew<CR>', { silent = true }, 'Buffer: New')
+  map('n', '<C-x>', '<cmd>bd<CR>', { silent = true }, 'Buffer: Close')
+  map('n', '<C-X>', '<cmd>bd!<CR>', { silent = true }, 'Buffer: Close!')
 
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 end
