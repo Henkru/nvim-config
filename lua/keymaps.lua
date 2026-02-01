@@ -16,6 +16,9 @@ M.general = function()
   map('n', '<C-j>', '<C-w><C-j>', { silent = true }, 'Window: Down')
   map('n', '<C-k>', '<C-w><C-k>', { silent = true }, 'Window: Up')
 
+  map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', { silent = true }, 'Buffer: Next')
+  map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', { silent = true }, 'Buffer: Previous')
+
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 end
 
