@@ -29,6 +29,10 @@ M.general = function()
   map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', { silent = true }, 'Buffer: Next')
   map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', { silent = true }, 'Buffer: Previous')
 
+  map('n', '<leader>t', function()
+    require('oil').toggle_float()
+  end, { silent = true }, 'File Explorer: Toggle')
+
   map('n', '<C-n>', '<cmd>enew<CR>', { silent = true }, 'Buffer: New')
   map('n', '<C-x>', '<cmd>bd<CR>', { silent = true }, 'Buffer: Close')
   map('n', '<C-X>', '<cmd>bd!<CR>', { silent = true }, 'Buffer: Close!')
