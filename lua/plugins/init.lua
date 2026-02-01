@@ -13,5 +13,6 @@ extend(require('plugins.tools'))
 extend(require('plugins.completion'))
 extend(require('plugins.treesitter'))
 extend(require('plugins.editor'))
+extend(require('plugins.dap'))
 
 return plugins

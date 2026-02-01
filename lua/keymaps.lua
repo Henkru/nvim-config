@@ -101,4 +101,23 @@ M.easy_align = function()
   map('v', 'ga', '<Plug>(EasyAlign)', { silent = true }, 'Easy Align')
 end
 
+M.dap = function(helpers)
+  local dap = require('dap')
+  local dapui = require('dapui')
+  local launch_current = helpers and helpers.launch_current or dap.continue
+
+  map('n', '<F5>', launch_current, { silent = true, noremap = true }, 'DAP: Continue')
+  map('n', '<F10>', dap.step_over, { silent = true, noremap = true }, 'DAP: Step Over')
+  map('n', '<F11>', dap.step_into, { silent = true, noremap = true }, 'DAP: Step Into')
+  map('n', '<F12>', dap.step_out, { silent = true, noremap = true }, 'DAP: Step Out')
+
+  map('n', '<leader>b', dap.toggle_breakpoint, { silent = true, noremap = true }, 'DAP: Toggle Breakpoint')
+  map('n', '<leader>B', function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+  end, { silent = true, noremap = true }, 'DAP: Conditional Breakpoint')
+
+  map('n', '<leader>dr', dap.repl.open, { silent = true, noremap = true }, 'DAP: Open REPL')
+  map('n', '<leader>du', dapui.toggle, { silent = true, noremap = true }, 'DAP: Toggle UI')
+end
+
 return M
