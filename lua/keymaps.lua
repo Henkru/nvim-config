@@ -19,4 +19,24 @@ M.general = function()
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 end
 
+M.lsp = function(bufnr)
+  local opts = { buffer = bufnr, silent = true }
+
+  map('n', '[d', function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end, opts, 'Diagnostic: Prev')
+  map('n', ']d', function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end, opts, 'Diagnostic: Next')
+
+  map('n', 'gD', vim.lsp.buf.declaration, opts, 'LSP: Declaration')
+  map('n', 'gd', vim.lsp.buf.definition, opts, 'LSP: Definition')
+  map('n', 'gi', vim.lsp.buf.implementation, opts, 'LSP: Implementation')
+  map('n', 'K', vim.lsp.buf.hover, opts, 'LSP: Hover')
+  map('n', '<leader>rn', vim.lsp.buf.rename, opts, 'LSP: Rename')
+  map('n', '<leader>ca', vim.lsp.buf.code_action, opts, 'LSP: Code Action')
+  map('n', '<leader>e', vim.diagnostic.open_float, opts, 'Diagnostic: Float')
+  map('n', '<leader>q', vim.diagnostic.setloclist, opts, 'Diagnostic: Loclist')
+end
+
 return M
