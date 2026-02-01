@@ -120,4 +120,28 @@ M.dap = function(helpers)
   map('n', '<leader>du', dapui.toggle, { silent = true, noremap = true }, 'DAP: Toggle UI')
 end
 
+M.trouble = function()
+  map('n', '<leader>xx', '<cmd>Trouble<CR>', { silent = true, noremap = true }, 'Diagnostic: Toggle')
+  map(
+    'n',
+    '<leader>xw',
+    '<cmd>Trouble lsp_workspace_diagnostics<CR>',
+    { silent = true, noremap = true },
+    'Diagnostic: LSP Workspace'
+  )
+  map(
+    'n',
+    '<leader>xd',
+    '<cmd>Trouble lsp_document_diagnostics<CR>',
+    { silent = true, noremap = true },
+    'Diagnostic: LSP Document'
+  )
+  map('n', '<leader>xl', '<cmd>Trouble loclist<CR>', { silent = true, noremap = true }, 'Diagnostic: Location List')
+  map('n', '<leader>xq', '<cmd>Trouble quickfix<CR>', { silent = true, noremap = true }, 'Diagnostic: Quickfix')
+end
+
+M.lsp_lines = function()
+  map('n', '<leader>hd', require('lsp_lines').toggle, { silent = true }, 'LSP: Toggle Lines')
+end
+
 return M
