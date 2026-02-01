@@ -179,4 +179,25 @@ M.lsp_lines = function()
   map('n', '<leader>hd', require('lsp_lines').toggle, { silent = true }, 'LSP: Toggle Lines')
 end
 
+-- Opencode
+
+M.opencode = function()
+  local opencode = require('opencode')
+  map({ 'n', 'x' }, '<leader>oa', function()
+    opencode.ask('@this: ', { submit = true })
+  end, { silent = true }, 'Opencode: Ask')
+  map({ 'n', 'x' }, '<leader>os', function()
+    opencode.select()
+  end, { silent = true }, 'Opencode: Select')
+  map({ 'n', 'x' }, '<leader>ot', function()
+    opencode.toggle()
+  end, { silent = true }, 'Opencode: Toggle')
+  map('n', 'go', function()
+    return opencode.operator('@this ')
+  end, { expr = true, silent = true }, 'Opencode: Operator')
+  map('n', 'goo', function()
+    return opencode.operator('@this ') .. '_'
+  end, { expr = true, silent = true }, 'Opencode: Line')
+end
+
 return M

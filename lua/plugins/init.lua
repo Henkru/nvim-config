@@ -9,6 +9,7 @@ end
 extend(require('plugins.core'))
 extend(require('plugins.ui'))
 extend(require('plugins.ui-extras'))
+extend(require('plugins.ai'))
 extend(require('plugins.lsp'))
 extend(require('plugins.tools'))
 extend(require('plugins.oil'))

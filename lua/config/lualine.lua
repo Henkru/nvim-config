@@ -17,5 +17,8 @@ require('lualine').setup({
       'fileformat',
       'filetype',
     },
+    lualine_z = {
+      require('opencode').statusline,
+    },
   },
 })
