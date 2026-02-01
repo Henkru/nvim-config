@@ -7,3 +7,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+vim.filetype.add({
+  extension = {
+    sl = 'sleep',
+    cna = 'sleep',
+    profile = 'malleable_c2',
+  },
+})

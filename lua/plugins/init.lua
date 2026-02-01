@@ -11,5 +11,6 @@ extend(require('plugins.ui'))
 extend(require('plugins.lsp'))
 extend(require('plugins.tools'))
 extend(require('plugins.completion'))
+extend(require('plugins.treesitter'))
 
 return plugins
