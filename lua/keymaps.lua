@@ -38,6 +38,11 @@ M.general = function()
   map('n', '<C-X>', '<cmd>bd!<CR>', { silent = true }, 'Buffer: Close!')
 
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
+
+  map('n', '<leader>y', function()
+    local path = require('henkru.utils').buffer_path(0)
+    vim.fn.setreg('+', path)
+  end, { silent = true }, 'Yank current buffer path')
 end
 
 -- Telescope
