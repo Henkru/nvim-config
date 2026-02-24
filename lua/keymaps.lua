@@ -39,6 +39,9 @@ M.general = function()
 
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true }, 'Terminal: Exit')
 
+  map('v', '<', '<gv', { noremap = true }, 'Indent left')
+  map('v', '>', '>gv', { noremap = true }, 'Indent right')
+
   map('n', '<leader>y', function()
     local path = require('henkru.utils').buffer_path(0)
     vim.fn.setreg('+', path)
